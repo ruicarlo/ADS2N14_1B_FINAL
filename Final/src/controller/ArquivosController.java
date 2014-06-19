@@ -57,7 +57,7 @@ public class ArquivosController {
             }
         }
     }
-    public String[] getRegistros() {
+    public Vector<String> getRegistros() {
         BufferedReader arquivo = null;         
         Vector<String> registros = new Vector<String>();
         try {
@@ -79,10 +79,6 @@ public class ArquivosController {
                 }
             }
         }
-        String[] retorno = new String[registros.getSize()];
-        for(int i = 0; i < registros.getSize();i++) {
-            retorno[i] = registros.getValueOf(i);
-        }
-        return retorno;
+        return registros;
     }
 }
