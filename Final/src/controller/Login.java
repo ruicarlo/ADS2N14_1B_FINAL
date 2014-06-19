@@ -12,14 +12,16 @@ public class Login {
 
 		usuarios = arquivo.getRegistros();
 
-		for (String usuario : usuarios.asArray()) {
-			String[] usuAux = usuario.split("##");
+		if (usuarios.getSize() > 0) {
+			for (String usuario : usuarios.asArray()) {
+				String[] usuAux = usuario.split("##");
 
-			if (user.getUsername().equals(usuAux[2])
-					&& user.getSenha().equals(usuAux[1])
-			) {
-				user.setNome(usuAux[0]);
-				return user;
+				if (user.getUsername().equals(usuAux[2])
+						&& user.getSenha().equals(usuAux[1])
+				) {
+					user.setNome(usuAux[0]);
+					return user;
+				}
 			}
 		}
 
