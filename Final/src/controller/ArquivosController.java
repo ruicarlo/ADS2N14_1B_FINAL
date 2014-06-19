@@ -8,7 +8,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
+
+import estruturas.Vector;
 
 public class ArquivosController {
     private String nome;
@@ -58,12 +59,12 @@ public class ArquivosController {
     }
     public String[] getRegistros() {
         BufferedReader arquivo = null;         
-        ArrayList<String> registros = new ArrayList();
+        Vector<String> registros = new Vector<String>();
         try {
             arquivo = new BufferedReader(new FileReader(this.nome));
             String linha;
             while ((linha = arquivo.readLine()) != null) {
-                registros.add(linha);
+                registros.append(linha);
             }
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
@@ -78,11 +79,10 @@ public class ArquivosController {
                 }
             }
         }
-        String[] retorno = new String[registros.size()];
-        for(int i = 0; i < registros.size();i++) {
-            retorno[i] = registros.get(i);
+        String[] retorno = new String[registros.getSize()];
+        for(int i = 0; i < registros.getSize();i++) {
+            retorno[i] = registros.getValueOf(i);
         }
         return retorno;
     }
-    
 }
