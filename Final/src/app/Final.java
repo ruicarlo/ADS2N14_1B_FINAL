@@ -5,7 +5,9 @@ import controller.Login;
 import controller.UsuarioController;
 import exceptions.UsuarioInvalidoException;
 
-
+/**
+ * Classe Final responsavel por cadastrar usuarios e efetuar login.
+ */
 public class Final {
 
 	public static void main(String[] args) {
