@@ -1,28 +1,35 @@
 package app;
 
-import controller.Login;
-import exceptions.UsuarioInvalidoException;
 import model.Usuario;
+import controller.Login;
+import controller.UsuarioController;
+import exceptions.UsuarioInvalidoException;
+
 
 public class Final {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		Usuario user = new Usuario();
-		user.setNome("rui");
-		user.setSenha("1234");
-		user.setUsername("ruicarlo");
-//		user.armazenarUsuarioNoArquivo();
-//		System.out.println("teste");
 
+		/*BLOCO PARA CADASTRAR USUARIOS*/
+		UsuarioController user = new UsuarioController();
+		try {
+			user.salvarUsuario("jolie", "jolie2014","jolizinha");
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		/*BLOCO PARA TESTAR LOGIN*/
 		Login login = new Login();
 		try {
-			login.autenticaUsuario(user);
+			login.setUsername("jolizinha");
+			login.setSenha("jolie2014");
+			Usuario usuario = login.autenticarUsuario();
+			System.out.println(String.format("ID: %d - Nome: %s - Senha: %s - Username: %s", usuario.getIdUsuario(),
+					                                                                         usuario.getNome(),
+					                                                                         usuario.getSenha(),
+					                                                                         usuario.getUsername()));
 		} catch (UsuarioInvalidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

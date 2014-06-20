@@ -57,6 +57,7 @@ public class ArquivosController {
             }
         }
     }
+
     public Vector<String> getRegistros() {
         BufferedReader arquivo = null;         
         Vector<String> registros = new Vector<String>();
@@ -81,4 +82,9 @@ public class ArquivosController {
         }
         return registros;
     }
+
+	public String[] explodirLinhaDoArquivo(String linhaArquivo) {
+		String[] linha = linhaArquivo.split("##");
+		return linha;
+	}
 }

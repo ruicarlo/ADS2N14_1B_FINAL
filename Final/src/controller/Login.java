@@ -1,30 +1,27 @@
 package controller;
 
 import model.Usuario;
-import estruturas.Vector;
+import controller.UsuarioController;
 import exceptions.UsuarioInvalidoException;
 
-
 public class Login {
-	public Usuario autenticaUsuario(Usuario user) throws UsuarioInvalidoException {
-		ArquivosController arquivo = new ArquivosController(user.getNomeArquivo());
-		Vector<String> usuarios = new Vector<String>();
+	String username;
+	String senha;
 
-		usuarios = arquivo.getRegistros();
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-		if (usuarios.getSize() > 0) {
-			for (String usuario : usuarios.asArray()) {
-				String[] usuAux = usuario.split("##");
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
-				if (user.getUsername().equals(usuAux[2])
-						&& user.getSenha().equals(usuAux[1])
-				) {
-					user.setNome(usuAux[0]);
-					return user;
-				}
-			}
+	public Usuario autenticarUsuario() throws UsuarioInvalidoException {
+		UsuarioController usuario = new UsuarioController();
+		try {
+			return usuario.autenticarUsuario(this.username, this.senha);
+		} catch(UsuarioInvalidoException e) {
+			throw new UsuarioInvalidoException();
 		}
-
-		throw new UsuarioInvalidoException();
 	}
 }
