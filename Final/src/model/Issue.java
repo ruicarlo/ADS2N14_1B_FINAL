@@ -8,7 +8,7 @@ public class Issue {
 	private int idIssue;
 	private int idUsuario;
 	private int idProjeto;
-	private String estado;
+	private String descricao;
 	private String titulo;
 	private String criticidade;
 	private String tipo;
@@ -44,33 +44,42 @@ public class Issue {
 		return this.nomeArquivo;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+	
 	public String getTitulo() {
 		return titulo;
 	}
+	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	
 	public String getCriticidade() {
 		return criticidade;
 	}
+	
 	public void setCriticidade(String criticidade) {
 		this.criticidade = criticidade;
 	}
+	
 	public String getTipo() {
 		return tipo;
 	}
+	
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
 	public String getStatus() {
 		return status;
 	}
+	
 	public void setStatus(String status) {
 		this.status = status;
 	}
@@ -79,7 +88,7 @@ public class Issue {
         return String.format("%d##%d##%d##%s##%s##%s##%s##%s", this.getProximoIdIssue(), 
         		                                               this.idUsuario,
                                                                this.idProjeto,
-        		                                               this.estado,
+        		                                               this.descricao,
         		                                               this.titulo,
         		                                               this.criticidade,
         		                                               this.tipo,
