@@ -18,10 +18,7 @@ public class Login {
 
 	public Usuario autenticarUsuario() throws UsuarioInvalidoException {
 		UsuarioController usuario = new UsuarioController();
-		try {
-			return usuario.autenticarUsuario(this.username, this.senha);
-		} catch(UsuarioInvalidoException e) {
-			throw new UsuarioInvalidoException();
-		}
+
+		return usuario.autenticarUsuario(this.username, this.senha);
 	}
 }
