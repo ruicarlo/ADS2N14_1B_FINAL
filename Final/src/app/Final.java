@@ -1,7 +1,6 @@
 package app;
 
 import model.Usuario;
-import controller.Login;
 import controller.UsuarioController;
 import exceptions.UsuarioInvalidoException;
 
@@ -21,11 +20,8 @@ public class Final {
 		}
 
 		/*BLOCO PARA TESTAR LOGIN*/
-		Login login = new Login();
 		try {
-			login.setUsername("jolizinha");
-			login.setSenha("jolie2014");
-			Usuario usuario = login.autenticarUsuario();
+			Usuario usuario = user.autenticarUsuario("jolizinha", "jolie2014");
 			System.out.println(String.format("ID: %d - Nome: %s - Senha: %s - Username: %s", usuario.getIdUsuario(),
 					                                                                         usuario.getNome(),
 					                                                                         usuario.getSenha(),
