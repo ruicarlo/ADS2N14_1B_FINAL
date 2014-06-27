@@ -1,10 +1,11 @@
 package controller;
 
+import interfaces.IUsuarioController;
 import estruturas.Vector;
 import exceptions.UsuarioInvalidoException;
 import model.Usuario;
 
-public class UsuarioController {
+public class UsuarioController implements IUsuarioController {
 	Usuario user = new Usuario();
 	
 	public void salvarUsuario(String nome, String senha, String username) throws Exception {
