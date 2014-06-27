@@ -23,15 +23,10 @@ public class ProjetoController {
     	if(projeto.getSize()<1){
     		return;
     	}
-<<<<<<< HEAD
     	for(String tituloProjeto : projeto.asArray()) {
     		String[] projetoAux = this.projeto.arquivo.explodirLinhaDoArquivo(tituloProjeto);
     		if(!projetoAux[3].isEmpty() && projetoAux[3].equalsIgnoreCase(tituloProjeto)) {
-=======
-    	for(String titulo : projetos.asArray()) {
-    		String[] projetoAux = this.projeto.arquivo.explodirLinhaDoArquivo(titulo);
-    		if(!projetoAux[3].isEmpty() && projetoAux[3].equalsIgnoreCase(titulo)) {
->>>>>>> fd80ebce75b5e5437e7f6f60b5aec01ee97da0d4
+
     			throw new Exception("Este titulo já está cadastrado no sistema");
     		}
     	}
@@ -41,13 +36,9 @@ public class ProjetoController {
     	Vector<String> listaTitulos = this.projeto.retornarListaProjetos();
 
     	if(listaTitulos.getSize() > 0) {
-<<<<<<< HEAD
-    		for(String titulo2 : listaTitulos.asArray()) {
-    			String[] projetoAux = this.projeto.arquivo.explodirLinhaDoArquivo(titulo2);
-=======
-    		for(String titulo : listaTitulos.asArray()) {
-    			String[] projetoAux = this.projeto.arquivo.explodirLinhaDoArquivo(titulo);
->>>>>>> fd80ebce75b5e5437e7f6f60b5aec01ee97da0d4
+
+    		for(String listaTitulo : listaTitulos.asArray()) {
+    			String[] projetoAux = this.projeto.arquivo.explodirLinhaDoArquivo(listaTitulo);
     				this.projeto.setIdProjeto(Integer.parseInt(projetoAux[0]));
     				this.projeto.setTitulo(projetoAux[1]);
     				return this.projeto;
