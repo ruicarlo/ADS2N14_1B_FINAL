@@ -20,19 +20,19 @@ public class UsuarioController {
 
 	private void validarNome(String nome) throws Exception {
 		if(nome.isEmpty()) {
-			throw new Exception("Para cadastrar um usuário o nome deve ser definido");
+			throw new Exception("Para cadastrar um usuï¿½rio o nome deve ser definido");
 		}
 	}
 	
 	private void validarSenha(String senha) throws Exception {
 		if(senha.isEmpty()) {
-			throw new Exception("Para cadastrar um usuário a senha deve ser definida");
+			throw new Exception("Para cadastrar um usuï¿½rio a senha deve ser definida");
 		}
 	}
 
 	private void validarUsername(String username) throws Exception {
 		if(username.isEmpty()) {
-			throw new Exception("Para cadastrar um usuário a senha deve ser definida");
+			throw new Exception("Para cadastrar um usuï¿½rio a senha deve ser definida");
 		}
 	}
 
@@ -44,7 +44,7 @@ public class UsuarioController {
     	for(String usuario : usuarios.asArray()) {
     		String[] usuarioAux = this.user.arquivo.explodirLinhaDoArquivo(usuario);
     		if(!usuarioAux[3].isEmpty() && usuarioAux[3].equalsIgnoreCase(username)) {
-    			throw new Exception("Este usuário já está cadastrado no sistema");
+    			throw new Exception("Este usuï¿½rio jï¿½ estï¿½ cadastrado no sistema");
     		}
     	}
     }
