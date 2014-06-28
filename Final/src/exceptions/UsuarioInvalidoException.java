@@ -4,6 +4,10 @@ public class UsuarioInvalidoException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public UsuarioInvalidoException() {
-		super("Usu·rio ou senha inv·lido.");
+		super("Usu√°rio ou senha inv√°lido.");
+	}
+
+	public UsuarioInvalidoException(String string) {
+		super(string);
 	}
 }

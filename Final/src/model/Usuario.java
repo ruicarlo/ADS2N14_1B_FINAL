@@ -2,6 +2,7 @@ package model;
 
 import controller.ArquivosController;
 import estruturas.Vector;
+import exceptions.UsuarioInvalidoException;
 
 public class Usuario {
 	final String nomeArquivo = "data/usuarios.txt";
@@ -73,4 +74,17 @@ public class Usuario {
 	public Vector<String> retornarListaUsuarios() {
     	return this.arquivo.getRegistros();
 	}
+
+    public void exists() throws UsuarioInvalidoException {
+    	Vector<String> usuarios = this.retornarListaUsuarios();
+    	if(usuarios.getSize()>0) {
+	    	for(String usuario : usuarios.asArray()) {
+	    		String[] usuarioAux = this.arquivo.explodirLinhaDoArquivo(usuario);
+	    		if(usuarioAux[0].equals(Integer.toString(idUsuario))) {
+	    			return;
+	    		}
+	    	}
+    	}
+    	throw new UsuarioInvalidoException("Este usuário não está cadastrado no sistema.");
+    }
 }

@@ -34,7 +34,6 @@ public class UsuarioControllerTest {
 		usuarioController.salvarUsuario("Silva Silva", "", "");
 	}
 
-
 	@Test(expected = Exception.class)
 	public void testNaoSalvarUsuarioExistenteNoArquivo() throws Exception {
 		usuarioController.salvarUsuario("Teste da Silva", "123", "testedasilva");
