@@ -1,8 +1,6 @@
 package controller;
 
 import model.Issue;
-import estruturas.Vector;
-import exceptions.UsuarioInvalidoException;
 
 public class IssueController {
 	Issue issue = new Issue();
@@ -37,7 +35,7 @@ public class IssueController {
 
 	private void validarDescricao(String descricao) throws Exception {
 		if(descricao.isEmpty()) {
-			throw new Exception("Para cadastrar um issue a descrição deve ser definida");
+			throw new Exception("Para cadastrar um issue a descriï¿½ï¿½o deve ser definida");
 		}
 	}
 
@@ -49,7 +47,7 @@ public class IssueController {
 	
 	private void validarIdUsuario(int idUsuario) throws Exception {
 		if(idUsuario < 1) {
-			throw new Exception("Para cadastrar um issue o usuário deve ser definido");
+			throw new Exception("Para cadastrar um issue o usuï¿½rio deve ser definido");
 		}
 	}
 	
