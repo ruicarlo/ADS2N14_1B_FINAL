@@ -98,7 +98,7 @@ public class Issue {
     public void armazenarIssueNoArquivo() {
         ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
         String[] conteudo = {this.getDadosParaSalvarArquivo()}; 
-        arquivo.escrever(conteudo, true);
+        arquivo.escrever(conteudo, false);
     }
 
     private int getProximoIdIssue() {
