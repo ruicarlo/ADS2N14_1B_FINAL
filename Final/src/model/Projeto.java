@@ -55,7 +55,7 @@ public class Projeto {
     public void armazenarProjetoNoArquivo() {
         ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
         String[] conteudo = {this.getDadosParaSalvarArquivo()}; 
-        arquivo.escrever(conteudo, true);
+        arquivo.escrever(conteudo, false);
     }
 
     private int getProximoIdProjeto() {

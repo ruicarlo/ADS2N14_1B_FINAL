@@ -6,47 +6,54 @@ public class IssueController {
 	Issue issue = new Issue();
 	
 	public void salvarIssue() throws Exception {
+		this.validarCriticidade();
+		this.validarDescricao();
+		this.validarIdProjeto();
+		this.validarIdUsuario();
+		this.validarStatus();
+		this.validarTipo();
+		this.validarTitulo();
 		this.issue.armazenarIssueNoArquivo();
 	}
 
-	private void validarTitulo(String titulo) throws Exception {
-		if(titulo.isEmpty()) {
+	private void validarTitulo() throws Exception {
+		if(this.issue.getTitulo() == null || this.issue.getTitulo().equals("")) {
 			throw new Exception("Para cadastrar um issue o titulo deve ser definido");
 		}
 	}
 	
-	private void validarCriticidade(String criticidade) throws Exception {
-		if(criticidade.isEmpty()) {
+	private void validarCriticidade() throws Exception {
+		if(this.issue.getCriticidade() == null || this.issue.getCriticidade().equals("")) {
 			throw new Exception("Para cadastrar um issue a criticidade deve ser definida");
 		}
 	}
 
-	private void validarTipo(String tipo) throws Exception {
-		if(tipo.isEmpty()) {
+	private void validarTipo() throws Exception {
+		if(this.issue.getTipo() == null || this.issue.getTipo().equals("")) {
 			throw new Exception("Para cadastrar um issue o tipo deve ser definido");
 		}
 	}
 
-	private void validarStatus(String status) throws Exception {
-		if(status.isEmpty()) {
+	private void validarStatus() throws Exception {
+		if(this.issue.getStatus() == null || this.issue.getStatus().equals("")) {
 			throw new Exception("Para cadastrar um issue o status deve ser definido");
 		}
 	}
 
-	private void validarDescricao(String descricao) throws Exception {
-		if(descricao.isEmpty()) {
+	private void validarDescricao() throws Exception {
+		if(this.issue.getDescricao() == null || this.issue.getDescricao().equals("")) {
 			throw new Exception("Para cadastrar um issue a descri��o deve ser definida");
 		}
 	}
 
-	private void validarIdProjeto(int idProjeto) throws Exception {
-		if(idProjeto < 1) {
+	private void validarIdProjeto() throws Exception {
+		if(this.issue.getIdProjeto() < 1) {
 			throw new Exception("Para cadastrar um issue o projeto deve ser definido");
 		}
 	}
 	
-	private void validarIdUsuario(int idUsuario) throws Exception {
-		if(idUsuario < 1) {
+	private void validarIdUsuario() throws Exception {
+		if(this.issue.getIdUsuario() < 1) {
 			throw new Exception("Para cadastrar um issue o usu�rio deve ser definido");
 		}
 	}
@@ -56,8 +63,8 @@ public class IssueController {
 	}
 
 	public void setIdProjeto(int idProjeto) throws Exception {
-		this.validarIdProjeto(idProjeto);
 		this.issue.setIdProjeto(idProjeto);
+		this.validarIdProjeto();
 	}
 
 	public int getIdUsuario() {
@@ -65,8 +72,8 @@ public class IssueController {
 	}
 
 	public void setIdUsuario(int idUsuario) throws Exception {
-		this.validarIdUsuario(idUsuario);
 		this.issue.setIdUsuario(idUsuario);
+		this.validarIdUsuario();
 	}
 
 	public int getIdIssue() {
@@ -78,8 +85,8 @@ public class IssueController {
 	}
 
 	public void setDescricao(String descricao) throws Exception {
-		this.validarDescricao(descricao);
 		this.issue.setDescricao(descricao);
+		this.validarDescricao();
 	}
 	
 	public String getTitulo() {
@@ -87,8 +94,8 @@ public class IssueController {
 	}
 	
 	public void setTitulo(String titulo) throws Exception {
-		this.validarTitulo(titulo);
 		this.issue.setTitulo(titulo);
+		this.validarTitulo();
 	}
 	
 	public String getCriticidade() {
@@ -96,8 +103,8 @@ public class IssueController {
 	}
 	
 	public void setCriticidade(String criticidade) throws Exception {
-		this.validarCriticidade(criticidade);
 		this.issue.setCriticidade(criticidade);
+		this.validarCriticidade();
 	}
 	
 	public String getTipo() {
@@ -105,8 +112,8 @@ public class IssueController {
 	}
 	
 	public void setTipo(String tipo) throws Exception {
-		this.validarTipo(tipo);
 		this.issue.setTipo(tipo);
+		this.validarTipo();
 	}
 	
 	public String getStatus() {
@@ -114,7 +121,7 @@ public class IssueController {
 	}
 	
 	public void setStatus(String status) throws Exception {
-		this.validarStatus(status);
 		this.issue.setStatus(status);
+		this.validarStatus();
 	}
 }

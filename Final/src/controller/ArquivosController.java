@@ -62,10 +62,12 @@ public class ArquivosController {
         BufferedReader arquivo = null;         
         Vector<String> registros = new Vector<String>();
         try {
-            arquivo = new BufferedReader(new FileReader(this.nome));
-            String linha;
-            while ((linha = arquivo.readLine()) != null) {
-                registros.append(linha);
+            if(this.verificarSeExiste()){
+	        	arquivo = new BufferedReader(new FileReader(this.nome));
+	            String linha;
+	            while ((linha = arquivo.readLine()) != null) {
+	                registros.append(linha);
+	            }
             }
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
