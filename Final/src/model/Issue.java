@@ -1,6 +1,6 @@
 package model;
 
-import controller.ArquivosController;
+import estruturas.Arquivos;
 import estruturas.Vector;
 
 public class Issue {
@@ -14,7 +14,7 @@ public class Issue {
 	private String tipo;
 	private String status;
 	
-	public ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
+	public Arquivos arquivo = new Arquivos(this.nomeArquivo);
 
 	public int getIdProjeto() {
 		return idProjeto;
@@ -96,13 +96,13 @@ public class Issue {
     }
 
     public void armazenarIssueNoArquivo() {
-        ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
+        Arquivos arquivo = new Arquivos(this.nomeArquivo);
         String[] conteudo = {this.getDadosParaSalvarArquivo()}; 
         arquivo.escrever(conteudo, false);
     }
 
     private int getProximoIdIssue() {
-    	return new ArquivosController(this.nomeArquivo).getRegistros().getSize()+1;
+    	return new Arquivos(this.nomeArquivo).getRegistros().getSize()+1;
     }
 
 	public Vector<String> retornarListaIssues() {

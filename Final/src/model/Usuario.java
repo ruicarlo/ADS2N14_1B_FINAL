@@ -1,6 +1,6 @@
 package model;
 
-import controller.ArquivosController;
+import estruturas.Arquivos;
 import estruturas.Vector;
 import exceptions.UsuarioInvalidoException;
 
@@ -11,7 +11,7 @@ public class Usuario {
 	private String senha;
 	private String username;
 
-	public ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
+	public Arquivos arquivo = new Arquivos(this.nomeArquivo);
 
     public int getIdUsuario() {
 		return idUsuario;
@@ -62,13 +62,13 @@ public class Usuario {
     }
 
     private void armazenarUsuarioNoArquivo() {
-        ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
+        Arquivos arquivo = new Arquivos(this.nomeArquivo);
         String[] conteudo = {this.getDadosParaSalvarArquivo()}; 
         arquivo.escrever(conteudo, false);
     }
 
     private int getProximoIdUsuario() {
-    	return new ArquivosController(this.nomeArquivo).getRegistros().getSize()+1;
+    	return new Arquivos(this.nomeArquivo).getRegistros().getSize()+1;
     }
 
 	public Vector<String> retornarListaUsuarios() {

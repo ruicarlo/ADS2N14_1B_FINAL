@@ -1,4 +1,4 @@
-package controller;
+package estruturas;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,12 +9,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-import estruturas.Vector;
-
-public class ArquivosController {
+public class Arquivos {
     private String nome;
     
-    public ArquivosController(String nome) {
+    public Arquivos(String nome) {
         this.nome = nome;
     }
     

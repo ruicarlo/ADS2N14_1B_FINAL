@@ -1,6 +1,6 @@
 package model;
 
-import controller.ArquivosController;
+import estruturas.Arquivos;
 import estruturas.Vector;
 
 public class Evento {
@@ -12,7 +12,7 @@ public class Evento {
 	private int idIssue;
 	private int idUsuario;
 	
-	public ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
+	public Arquivos arquivo = new Arquivos(this.nomeArquivo);
 
 	public String getNomeArquivo() {
 		return this.nomeArquivo;
@@ -59,13 +59,13 @@ public class Evento {
     }
 
     public void armazenarIssueNoArquivo() {
-        ArquivosController arquivo = new ArquivosController(this.nomeArquivo);
+        Arquivos arquivo = new Arquivos(this.nomeArquivo);
         String[] conteudo = {this.getDadosParaSalvarArquivo()};
         arquivo.escrever(conteudo, false);
     }
 
     private int getProximoIdEvento() {
-    	return new ArquivosController(this.nomeArquivo).getRegistros().getSize()+1;
+    	return new Arquivos(this.nomeArquivo).getRegistros().getSize()+1;
     }
 
 	public Vector<String> retornarListaEventos() {
