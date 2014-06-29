@@ -1,14 +1,18 @@
 package app;
 
-import model.Usuario;
+import static java.lang.System.out;
 import controller.UsuarioController;
+<<<<<<< HEAD
 import exceptions.controllers.UsuarioException.*;
+=======
+>>>>>>> origin/master
 
 /**
  * Classe Final responsavel por cadastrar usuarios e efetuar login.
  */
 public class Final {
 
+<<<<<<< HEAD
 	public static void main(String[] args) throws FalhaDeAutenticacaoException {
 
 		/*BLOCO PARA CADASTRAR USUARIOS*/
@@ -32,6 +36,14 @@ public class Final {
 			System.out.println(e.getMessage());
 		}
 
+=======
+	public static void main(String[] args) {
+		out.println("Sistema de Issues!");
+
+		/* LOGIN */
+		UsuarioController usuarioC = new UsuarioController();
+		usuarioC.login();
+>>>>>>> origin/master
 	}
 
 }
