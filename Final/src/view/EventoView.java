@@ -57,5 +57,46 @@ public class EventoView extends PadraoView {
 	public void msgEventoCadastrado() {
 		printMsgln("Evento" + "X" + "cadastrado com sucesso.");
 	}
+	
+	public void msgIssueCriada(){
+		printMsgln("Issue criada com sucesso.");
+	}
+	
+	public void msgMarcouIssueValida(){
+		printMsgln("Usuario" + "userX" + "marcou a issue como valida.");
+	}
+	
+	public void msgCriticidadeAlterada(){
+		printMsgln("Usuario" + "userX" + "alterou a criticidade para " + "criticidadeY");
+	}
+	
+	public void msgTipoAlterado(){
+		printMsgln("Usuario" + "userX" + "alterou o tipo para " + "tipoY");
+	}
 
+	public void msgComentarioInserido(){
+		printMsgln("Comentario inserido.");
+	}
+	
+	public void msgIssueAtribuida(){
+		printMsgln("Issue atribuida para usuario " + "userX");
+	}
+	
+	public void msgDesenvolvimentoIniciado(){
+		printMsgln("Desenvolvimento iniciado.");
+	}
+	
+	public void msgMarcarComoDuplicado(){
+		printMsgln("commentsToUserX" + " - "+ "Issue marcada como duplicado pelo usuario" + "userX");
+	}
+	
+	public void msgIssueFechada(){
+		printMsgln("Issue finalizada.");
+	}
+	
+	public void msgMarcadaComoWontFix(){
+		printMsgln("Issue marcada como Wont Fix");
+	}
+	
+	
 }

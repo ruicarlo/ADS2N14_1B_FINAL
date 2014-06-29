@@ -21,44 +21,44 @@ public class EventoController {
 
 	public void menuEventoController(){
 		if(eventoV.menuEvento() == 1) {
-			System.out.println("Issue criada com sucesso.");
 			//chamar o metodo criarIssue
+			eventoV.msgIssueCriada();
 		}
 		else if(eventoV.menuEvento() == 2){
-			System.out.println("Usuario" + "userX" + "marcou a issue como valida.");
 			//chamar o metodo marcarIssueComoValida
+			eventoV.msgMarcouIssueValida();
 		}
 		else if(eventoV.menuEvento() == 3){
-			System.out.println("Usuario" + "userX" + "alterou a criticidade para " + "criticidadeY");
 			//chamar o metodo alterarCriticidade
+			eventoV.msgCriticidadeAlterada();
 		}
 		else if(eventoV.menuEvento() == 4){
-			System.out.println("Usuario" + "userX" + "alterou o tipo para " + "tipoY");
 			//chamar o metodo alterarTipo
+			eventoV.msgTipoAlterado();
 		}
 		else if(eventoV.menuEvento() == 5){
-			System.out.println("Comentario inserido com sucesso.");
 			//chamar o metodo inserirComentario
+			eventoV.msgComentarioInserido();
 		}
 		else if(eventoV.menuEvento() == 6){
-			System.out.println("Issue atribuida para usuario " + "userX");
 			//chamar o metodo atribuirIssue
+			eventoV.msgIssueAtribuida();
 		}
 		else if(eventoV.menuEvento() == 7){
-			System.out.println("Desenvolvimento iniciado.");
 			//chamar o metodo iniciarDesenvolvimento
+			eventoV.msgDesenvolvimentoIniciado();
 		}
 		else if(eventoV.menuEvento() == 8){
-			System.out.println("commentsToUserX" + " - "+ "Issue marcada como duplicado pelo usuario" + "userX");
-			//chamar o metodo marcarComoDuplicado 
+			//chamar o metodo marcarComoDuplicado
+			eventoV.msgMarcarComoDuplicado();
 		}
 		else if(eventoV.menuEvento() == 9){
-			System.out.println("Issue finalizada.");
 			//chamar o metodo fecharIssue 
+			eventoV.msgIssueFechada();
 		}
 		else if(eventoV.menuEvento() == 10){
-			System.out.println("Issue marcada como Wont Fix");
 			//chamar o metodo marcarWontFix 
+			eventoV.msgMarcadaComoWontFix();
 		}
 
 		
