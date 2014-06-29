@@ -9,8 +9,14 @@ import model.Usuario;
 
 public class IssueController {
 	Issue issue = new Issue();
-	
-	public void salvarIssue() throws Exception {
+
+	public void salvarIssue() throws CriticidadeInvalidaException,
+	                                 DescricaoInvalidaException,
+	                                 ProjetoInvalidoException,
+	                                 exceptions.controllers.IssueException.UsuarioInvalidoException,
+	                                 StatusInvalidoException,
+	                                 TipoInvalidoException,
+	                                 TituloInvalidoException {
 		this.validarCriticidade();
 		this.validarDescricao();
 		this.validarIdProjeto();

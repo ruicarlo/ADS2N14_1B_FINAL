@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import model.Usuario;
 import controller.ProjetoController;
-import exceptions.TituloInvalidoException;
 import exceptions.UsuarioInvalidoException;
+import exceptions.controllers.ProjetoException.*;
 
 public class ProjetoControllerTest {
 	private ProjetoController projController;
@@ -31,7 +31,7 @@ public class ProjetoControllerTest {
 		projController.salvarProjeto();
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = DescricaoInvalidaException.class)
 	public void testNaoSalvarProjetoDescricaoInvalida() throws Exception {
 		doNothing().when(usuarioLogado).exists();
 		

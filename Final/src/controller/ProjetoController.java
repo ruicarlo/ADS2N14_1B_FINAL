@@ -1,13 +1,16 @@
 package controller;
 
-import exceptions.TituloInvalidoException;
+import exceptions.controllers.ProjetoException;
+import exceptions.controllers.ProjetoException.*;
 import model.Projeto;
 import model.Usuario;
 
 public class ProjetoController {
 	Projeto projeto = new Projeto();
 	
-	public void salvarProjeto() throws Exception {
+	public void salvarProjeto() throws TituloInvalidoException,
+	                                   DescricaoInvalidaException,
+	                                   CriadorInvalidoException {
 		this.validarTitulo();
 		this.validarDescricao();
 		this.validarCriador();
@@ -16,19 +19,19 @@ public class ProjetoController {
 
 	private void validarTitulo() throws TituloInvalidoException {
 		if(this.projeto.getTitulo() == null || this.projeto.getTitulo().equals("")) {
-			throw new TituloInvalidoException();
+			throw new ProjetoException.TituloInvalidoException();
 		}
 	}
 
-	private void validarDescricao() throws Exception {
+	private void validarDescricao() throws DescricaoInvalidaException {
 		if(this.projeto.getDescricao() == null || this.projeto.getDescricao().equals("")) {
-			throw new Exception("Para cadastrar um projeto a descricao deve ser definido");
+			throw new ProjetoException.DescricaoInvalidaException();
 		}
 	}
 	
-	private void validarCriador() throws Exception {
+	private void validarCriador() throws CriadorInvalidoException {
 		if(this.projeto.getIdCriador() < 0) {
-			throw new Exception("Para cadastrar um projeto o usuario deve ser definido");
+			throw new ProjetoException.CriadorInvalidoException();
 		}
 	}
 
