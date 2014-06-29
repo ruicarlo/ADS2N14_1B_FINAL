@@ -85,6 +85,7 @@ public class ProjetoController {
 
 	private void cadastrarProjeto() {
     	try {
+    		projetoV.setTeclado();
     		projetoV.imprimirDigiteTitulo();
     		this.setTitulo(projetoV.lerString());
     		

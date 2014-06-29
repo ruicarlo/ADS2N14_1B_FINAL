@@ -16,7 +16,7 @@ public class PadraoView {
 		this.arquivo = new Arquivos();
 	}
 
-	protected void setTeclado() {
+	public void setTeclado() {
         this.teclado = new Scanner(System.in);
     }
 
