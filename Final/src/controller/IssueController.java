@@ -1,6 +1,11 @@
 package controller;
 
+import exceptions.UsuarioInvalidoException;
+import exceptions.controllers.IssueException;
+import exceptions.controllers.IssueException.*;
 import model.Issue;
+import model.Projeto;
+import model.Usuario;
 
 public class IssueController {
 	Issue issue = new Issue();
@@ -9,52 +14,52 @@ public class IssueController {
 		this.validarCriticidade();
 		this.validarDescricao();
 		this.validarIdProjeto();
-		this.validarIdUsuario();
+		this.validarUsuario();
 		this.validarStatus();
 		this.validarTipo();
 		this.validarTitulo();
 		this.issue.armazenarIssueNoArquivo();
 	}
 
-	private void validarTitulo() throws Exception {
+	private void validarTitulo() throws TituloInvalidoException {
 		if(this.issue.getTitulo() == null || this.issue.getTitulo().equals("")) {
-			throw new Exception("Para cadastrar um issue o titulo deve ser definido");
+			throw new IssueException.TituloInvalidoException();
 		}
 	}
 	
-	private void validarCriticidade() throws Exception {
+	private void validarCriticidade() throws CriticidadeInvalidaException {
 		if(this.issue.getCriticidade() == null || this.issue.getCriticidade().equals("")) {
-			throw new Exception("Para cadastrar um issue a criticidade deve ser definida");
+			throw new IssueException.CriticidadeInvalidaException();
 		}
 	}
 
-	private void validarTipo() throws Exception {
+	private void validarTipo() throws TipoInvalidoException {
 		if(this.issue.getTipo() == null || this.issue.getTipo().equals("")) {
-			throw new Exception("Para cadastrar um issue o tipo deve ser definido");
+			throw new IssueException.TipoInvalidoException();
 		}
 	}
 
-	private void validarStatus() throws Exception {
+	private void validarStatus() throws StatusInvalidoException {
 		if(this.issue.getStatus() == null || this.issue.getStatus().equals("")) {
-			throw new Exception("Para cadastrar um issue o status deve ser definido");
+			throw new IssueException.StatusInvalidoException();
 		}
 	}
 
-	private void validarDescricao() throws Exception {
+	private void validarDescricao() throws DescricaoInvalidaException {
 		if(this.issue.getDescricao() == null || this.issue.getDescricao().equals("")) {
-			throw new Exception("Para cadastrar um issue a descri��o deve ser definida");
+			throw new IssueException.DescricaoInvalidaException();
 		}
 	}
 
-	private void validarIdProjeto() throws Exception {
-		if(this.issue.getIdProjeto() < 1) {
-			throw new Exception("Para cadastrar um issue o projeto deve ser definido");
+	private void validarIdProjeto() throws ProjetoInvalidoException {
+		if(this.issue.getIdProjeto() < 0) {
+			throw new IssueException.ProjetoInvalidoException();
 		}
 	}
 	
-	private void validarIdUsuario() throws Exception {
-		if(this.issue.getIdUsuario() < 1) {
-			throw new Exception("Para cadastrar um issue o usu�rio deve ser definido");
+	private void validarUsuario() throws exceptions.controllers.IssueException.UsuarioInvalidoException  {
+		if(this.issue.getIdUsuario() < 0) {
+			throw new IssueException.UsuarioInvalidoException();
 		}
 	}
 	
@@ -62,8 +67,8 @@ public class IssueController {
 		return this.issue.getIdProjeto();
 	}
 
-	public void setIdProjeto(int idProjeto) throws Exception {
-		this.issue.setIdProjeto(idProjeto);
+	public void setProjeto(Projeto projeto) throws Exception {
+		this.issue.setIdProjeto(projeto.getIdProjeto());
 		this.validarIdProjeto();
 	}
 
@@ -71,9 +76,9 @@ public class IssueController {
 		return this.issue.getIdUsuario();
 	}
 
-	public void setIdUsuario(int idUsuario) throws Exception {
-		this.issue.setIdUsuario(idUsuario);
-		this.validarIdUsuario();
+	public void setUsuario(Usuario usuario) throws UsuarioInvalidoException {
+		usuario.exists();
+		this.issue.setIdUsuario(usuario.getIdUsuario());
 	}
 
 	public int getIdIssue() {
@@ -84,7 +89,7 @@ public class IssueController {
 		return this.issue.getDescricao();
 	}
 
-	public void setDescricao(String descricao) throws Exception {
+	public void setDescricao(String descricao) throws DescricaoInvalidaException {
 		this.issue.setDescricao(descricao);
 		this.validarDescricao();
 	}
@@ -93,7 +98,7 @@ public class IssueController {
 		return this.issue.getTitulo();
 	}
 	
-	public void setTitulo(String titulo) throws Exception {
+	public void setTitulo(String titulo) throws TituloInvalidoException {
 		this.issue.setTitulo(titulo);
 		this.validarTitulo();
 	}
@@ -102,7 +107,7 @@ public class IssueController {
 		return this.issue.getCriticidade();
 	}
 	
-	public void setCriticidade(String criticidade) throws Exception {
+	public void setCriticidade(String criticidade) throws CriticidadeInvalidaException {
 		this.issue.setCriticidade(criticidade);
 		this.validarCriticidade();
 	}
@@ -111,7 +116,7 @@ public class IssueController {
 		return this.issue.getTipo();
 	}
 	
-	public void setTipo(String tipo) throws Exception {
+	public void setTipo(String tipo) throws TipoInvalidoException {
 		this.issue.setTipo(tipo);
 		this.validarTipo();
 	}
@@ -120,7 +125,7 @@ public class IssueController {
 		return this.issue.getStatus();
 	}
 	
-	public void setStatus(String status) throws Exception {
+	public void setStatus(String status) throws StatusInvalidoException {
 		this.issue.setStatus(status);
 		this.validarStatus();
 	}
