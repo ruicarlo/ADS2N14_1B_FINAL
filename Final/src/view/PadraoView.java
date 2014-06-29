@@ -6,9 +6,16 @@ import static java.lang.System.out;
 import java.util.Scanner;
 
 public class PadraoView {
+	Scanner teclado;
 
-	Scanner teclado = new Scanner(in);
-	
+	public PadraoView() {
+		this.setTeclado();
+	}
+
+	protected void setTeclado() {
+        this.teclado = new Scanner(System.in);
+    }
+
 	public void printMsg(String msg) {
 		out.print(msg);
 	}
