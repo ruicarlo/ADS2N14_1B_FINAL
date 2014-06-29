@@ -1,5 +1,6 @@
 package controller;
 
+import view.EventoView;
 import exceptions.controllers.EventoException;
 import exceptions.controllers.EventoException.*;
 import exceptions.controllers.UsuarioException;
@@ -9,7 +10,7 @@ import model.Evento;
 
 public class EventoController {
 	Evento evento = new Evento();
-	
+	EventoView eventoV = new EventoView();
 	public void salvarEvento() throws Exception {
 		this.validarComentario();
 		this.validarData();
@@ -18,6 +19,50 @@ public class EventoController {
 		this.evento.armazenarEventoNoArquivo();
 	}
 
+	public void menuEventoController(){
+		if(eventoV.menuEvento() == 1) {
+			System.out.println("Issue criada com sucesso.");
+			//chamar o metodo criarIssue
+		}
+		else if(eventoV.menuEvento() == 2){
+			System.out.println("Usuario" + "userX" + "marcou a issue como valida.");
+			//chamar o metodo marcarIssueComoValida
+		}
+		else if(eventoV.menuEvento() == 3){
+			System.out.println("Usuario" + "userX" + "alterou a criticidade para " + "criticidadeY");
+			//chamar o metodo alterarCriticidade
+		}
+		else if(eventoV.menuEvento() == 4){
+			System.out.println("Usuario" + "userX" + "alterou o tipo para " + "tipoY");
+			//chamar o metodo alterarTipo
+		}
+		else if(eventoV.menuEvento() == 5){
+			System.out.println("Comentario inserido com sucesso.");
+			//chamar o metodo inserirComentario
+		}
+		else if(eventoV.menuEvento() == 6){
+			System.out.println("Issue atribuida para usuario " + "userX");
+			//chamar o metodo atribuirIssue
+		}
+		else if(eventoV.menuEvento() == 7){
+			System.out.println("Desenvolvimento iniciado.");
+			//chamar o metodo iniciarDesenvolvimento
+		}
+		else if(eventoV.menuEvento() == 8){
+			System.out.println("commentsToUserX" + " - "+ "Issue marcada como duplicado pelo usuario" + "userX");
+			//chamar o metodo marcarComoDuplicado 
+		}
+		else if(eventoV.menuEvento() == 9){
+			System.out.println("Issue finalizada.");
+			//chamar o metodo fecharIssue 
+		}
+		else if(eventoV.menuEvento() == 10){
+			System.out.println("Issue marcada como Wont Fix");
+			//chamar o metodo marcarWontFix 
+		}
+
+		
+	}
 	private void validarData() throws DataInvalidaException {
 		if(this.evento.getData() == null || this.evento.getData().equals("")) {
 			throw new EventoException.DataInvalidaException();
