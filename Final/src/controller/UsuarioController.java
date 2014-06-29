@@ -1,13 +1,18 @@
 package controller;
 
 import estruturas.Vector;
-import exceptions.UsuarioInvalidoException;
+import exceptions.controllers.UsuarioException;
+import exceptions.controllers.UsuarioException.*;
 import model.Usuario;
 
 public class UsuarioController {
 	Usuario user = new Usuario();
 	
-	public void salvarUsuario(String nome, String senha, String username) throws Exception {
+	public void salvarUsuario(String nome, String senha, String username) throws NomeInvalidoException,
+	                                                                             SenhaInvalidaException,
+	                                                                             UsernameInvalidoException,
+	                                                                             UsuarioJaCadastradoException,
+	                                                                             Exception {
 		this.validarNome(nome);
 		this.validarSenha(senha);
 		this.validarUsername(username);
@@ -18,25 +23,25 @@ public class UsuarioController {
 		this.user.salvarUsuario();
 	}
 
-	private void validarNome(String nome) throws Exception {
+	private void validarNome(String nome) throws NomeInvalidoException {
 		if(nome.isEmpty()) {
-			throw new Exception("Para cadastrar um usu�rio o nome deve ser definido");
+			throw new UsuarioException.NomeInvalidoException();
 		}
 	}
 	
-	private void validarSenha(String senha) throws Exception {
+	private void validarSenha(String senha) throws SenhaInvalidaException {
 		if(senha.isEmpty()) {
-			throw new Exception("Para cadastrar um usu�rio a senha deve ser definida");
+			throw new UsuarioException.SenhaInvalidaException();
 		}
 	}
 
-	private void validarUsername(String username) throws Exception {
+	private void validarUsername(String username) throws UsernameInvalidoException {
 		if(username.isEmpty()) {
-			throw new Exception("Para cadastrar um usu�rio a senha deve ser definida");
+			throw new UsuarioException.UsernameInvalidoException();
 		}
 	}
 
-    private void verificarSeUsuarioJaExiste(String username) throws Exception {
+    private void verificarSeUsuarioJaExiste(String username) throws UsuarioJaCadastradoException {
     	Vector<String> usuarios = this.user.retornarListaUsuarios();
     	if(usuarios.getSize()<1){
     		return;
@@ -44,12 +49,12 @@ public class UsuarioController {
     	for(String usuario : usuarios.asArray()) {
     		String[] usuarioAux = this.user.arquivo.explodirLinhaDoArquivo(usuario);
     		if(!usuarioAux[3].isEmpty() && usuarioAux[3].equalsIgnoreCase(username)) {
-    			throw new Exception("Este usu�rio j� est� cadastrado no sistema");
+    			throw new UsuarioException.UsuarioJaCadastradoException();
     		}
     	}
     }
 
-    public Usuario autenticarUsuario(String username, String senha) throws UsuarioInvalidoException {
+    public Usuario autenticarUsuario(String username, String senha) throws FalhaDeAutenticacaoException {
     	Vector<String> listaUsuarios = this.user.retornarListaUsuarios();
 
     	if(listaUsuarios.getSize() > 0) {
@@ -64,6 +69,6 @@ public class UsuarioController {
     			}
     		}
     	}
-    	throw new UsuarioInvalidoException();
+    	throw new UsuarioException.FalhaDeAutenticacaoException();
     }
 }

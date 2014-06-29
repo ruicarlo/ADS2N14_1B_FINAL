@@ -1,8 +1,9 @@
 package controller;
 
-import exceptions.UsuarioInvalidoException;
 import exceptions.controllers.IssueException;
 import exceptions.controllers.IssueException.*;
+import exceptions.controllers.UsuarioException;
+import exceptions.controllers.UsuarioException.*;
 import model.Issue;
 import model.Projeto;
 import model.Usuario;

@@ -9,7 +9,7 @@ import org.junit.Test;
 import model.Projeto;
 import model.Usuario;
 import controller.IssueController;
-import exceptions.UsuarioInvalidoException;
+import exceptions.controllers.UsuarioException.*;
 import exceptions.controllers.IssueException.*;
 
 public class IssueControllerTest {

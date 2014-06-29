@@ -8,7 +8,7 @@ import org.junit.*;
 
 import static org.mockito.Mockito.*;
 import controller.UsuarioController;
-import exceptions.UsuarioInvalidoException;
+import exceptions.controllers.UsuarioException.*;
 
 public class UsuarioControllerTest {
 
@@ -40,12 +40,12 @@ public class UsuarioControllerTest {
 	}
 
 	@Test
-	public void testAutenticacaoUsuario() throws UsuarioInvalidoException {
+	public void testAutenticacaoUsuario() throws FalhaDeAutenticacaoException {
 		usuarioController.autenticarUsuario(usuario, usuario);
 	}
 
-	@Test(expected = UsuarioInvalidoException.class)
-	public void testFalhaAutenticacaoUsuario() throws UsuarioInvalidoException {
+	@Test(expected = FalhaDeAutenticacaoException.class)
+	public void testFalhaAutenticacaoUsuario() throws FalhaDeAutenticacaoException {
 		usuarioController.autenticarUsuario(anyString(), anyString());
 	}
 }

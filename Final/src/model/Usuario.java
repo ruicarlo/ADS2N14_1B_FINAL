@@ -2,7 +2,8 @@ package model;
 
 import estruturas.Arquivos;
 import estruturas.Vector;
-import exceptions.UsuarioInvalidoException;
+import exceptions.controllers.UsuarioException;
+import exceptions.controllers.UsuarioException.*;
 
 public class Usuario {
 	final String nomeArquivo = "data/usuarios.txt";
@@ -85,6 +86,6 @@ public class Usuario {
 	    		}
 	    	}
     	}
-    	throw new UsuarioInvalidoException("Este usuário não está cadastrado no sistema.");
+    	throw new UsuarioException.UsuarioInvalidoException();
     }
 }

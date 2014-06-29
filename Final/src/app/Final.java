@@ -2,14 +2,14 @@ package app;
 
 import model.Usuario;
 import controller.UsuarioController;
-import exceptions.UsuarioInvalidoException;
+import exceptions.controllers.UsuarioException.*;
 
 /**
  * Classe Final responsavel por cadastrar usuarios e efetuar login.
  */
 public class Final {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FalhaDeAutenticacaoException {
 
 		/*BLOCO PARA CADASTRAR USUARIOS*/
 
@@ -28,7 +28,7 @@ public class Final {
 					                                                                         usuario.getNome(),
 					                                                                         usuario.getSenha(),
 					                                                                         usuario.getUsername()));
-		} catch (UsuarioInvalidoException e) {
+		} catch (FalhaDeAutenticacaoException e) {
 			System.out.println(e.getMessage());
 		}
 
