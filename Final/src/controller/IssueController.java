@@ -52,13 +52,13 @@ public class IssueController {
 	}
 
 	private void validarIdProjeto() throws ProjetoInvalidoException {
-		if(this.issue.getIdProjeto() < 0) {
+		if(this.issue.getIdProjeto() < 1) {
 			throw new IssueException.ProjetoInvalidoException();
 		}
 	}
 	
 	private void validarUsuario() throws exceptions.controllers.IssueException.UsuarioInvalidoException  {
-		if(this.issue.getIdUsuario() < 0) {
+		if(this.issue.getIdUsuario() < 1) {
 			throw new IssueException.UsuarioInvalidoException();
 		}
 	}
