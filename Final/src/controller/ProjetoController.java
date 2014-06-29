@@ -9,7 +9,11 @@ import model.Usuario;
 public class ProjetoController {
 	Projeto projeto = new Projeto();
 	ProjetoView projetoV = new ProjetoView();
-	
+
+	public ProjetoController(Usuario criador) throws Exception {
+		this.setCriador(criador);
+	}
+
 	public void salvarProjeto() throws TituloInvalidoException,
 	                                   DescricaoInvalidaException,
 	                                   CriadorInvalidoException {
@@ -93,6 +97,7 @@ public class ProjetoController {
     		this.setDescricao(projetoV.lerString());
     		
 			this.salvarProjeto();
+			projetoV.imprimirProjetoCadastradoComSucesso();
     	} catch(Exception e) {
     		projetoV.printMsg(e.getMessage());
     	}

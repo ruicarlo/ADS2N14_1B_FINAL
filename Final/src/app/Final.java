@@ -19,8 +19,7 @@ public class Final {
 		UsuarioController usuarioC = new UsuarioController();
 		usuarioLogado = usuarioC.login();
 
-		ProjetoController projetoC = new ProjetoController();
-		projetoC.setCriador(usuarioLogado);
+		ProjetoController projetoC = new ProjetoController(usuarioLogado);
 		projetoC.telaInicialApp();
 	}
 
