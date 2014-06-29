@@ -1,3 +1,21 @@
 2##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
 2##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
 3##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
+4##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
+5##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
+6##0##0##Com descricao##Teste##A##B##A
+7##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+8##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+9##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+10##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+11##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+12##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+13##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+14##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+15##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+16##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+17##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+18##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+19##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+20##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+21##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste

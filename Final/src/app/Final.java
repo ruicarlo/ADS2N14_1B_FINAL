@@ -1,7 +1,6 @@
 package app;
 
 import model.Usuario;
-import controller.IssueController;
 import controller.UsuarioController;
 import exceptions.UsuarioInvalidoException;
 
@@ -11,21 +10,6 @@ import exceptions.UsuarioInvalidoException;
 public class Final {
 
 	public static void main(String[] args) {
-
-		/*BLOCO PARA CADASTRAR ISSUE*/
-		IssueController issue = new IssueController();
-		try {
-			issue.setCriticidade("Alta");
-			issue.setDescricao("Criar sistema de issue de acordo com a solicitacao");
-			issue.setIdProjeto(1);
-			issue.setIdUsuario(1);
-			issue.setStatus("N");
-			issue.setTipo("B");
-			issue.setTitulo("Sistema de issues");
-			issue.salvarIssue();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
 
 		/*BLOCO PARA CADASTRAR USUARIOS*/
 

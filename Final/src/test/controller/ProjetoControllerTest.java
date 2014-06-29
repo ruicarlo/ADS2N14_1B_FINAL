@@ -23,23 +23,41 @@ public class ProjetoControllerTest {
 
 	@Test
 	public void testSalvarProjetoValidoNoArquivo() throws Exception {
-		doNothing().when(usuarioLogado).exists();;
+		doNothing().when(usuarioLogado).exists();
 		
-		projController.salvarProjeto("Teste", "Com descricao", usuarioLogado);
-		projController.salvarProjeto("Teste", "", usuarioLogado);
+		projController.setTitulo("Teste");
+		projController.setDescricao("Com descricao");
+		projController.setCriador(usuarioLogado);
+		projController.salvarProjeto();
+	}
+
+	@Test(expected = Exception.class)
+	public void testNaoSalvarProjetoDescricaoInvalida() throws Exception {
+		doNothing().when(usuarioLogado).exists();
+		
+		projController.setTitulo("Teste");
+		projController.setDescricao("");
+		projController.setCriador(usuarioLogado);
+		projController.salvarProjeto();
 	}
 
 	@Test(expected = TituloInvalidoException.class)
 	public void testNaoSalvarProjetoSemTituloNoArquivo() throws Exception {
-		doNothing().when(usuarioLogado).exists();;
+		doNothing().when(usuarioLogado).exists();
 		
-		projController.salvarProjeto("", "Com descricao", usuarioLogado);
+		projController.setTitulo("");
+		projController.setDescricao("Com descricao");
+		projController.setCriador(usuarioLogado);
+		projController.salvarProjeto();
 	}
 
 	@Test(expected = UsuarioInvalidoException.class)
 	public void testNaoSalvarProjetoComUsuarioInexistenteNoArquivo() throws Exception {
-		doThrow(new UsuarioInvalidoException()).when(usuarioLogado).exists();;
+		doThrow(new UsuarioInvalidoException()).when(usuarioLogado).exists();
 		
-		projController.salvarProjeto("", "Com descricao", usuarioLogado);
+		projController.setTitulo("Teste");
+		projController.setDescricao("Com descricao");
+		projController.setCriador(usuarioLogado);
+		projController.salvarProjeto();
 	}
 }
