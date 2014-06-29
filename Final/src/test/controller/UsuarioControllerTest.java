@@ -10,6 +10,7 @@ import org.junit.*;
 
 import static org.mockito.Mockito.*;
 import controller.UsuarioController;
+import estruturas.Vector;
 import exceptions.UsuarioInvalidoException;
 
 public class UsuarioControllerTest {
@@ -43,7 +44,7 @@ public class UsuarioControllerTest {
 
 	@Test(expected = Exception.class)
 	public void testNaoSalvarUsuarioFaltandoDadosNoArquivo() throws Exception {
-		dadosDoUsuarioParaRetornar("Silva Silva", " ", "a");
+		dadosDoUsuarioParaRetornar("Teste da Silva", "123", "testedasilva");
 		usuarioController.setUsuario(usuario);
 		usuarioController.salvarUsuario();
 	}
@@ -62,6 +63,6 @@ public class UsuarioControllerTest {
 
 	@Test(expected = UsuarioInvalidoException.class)
 	public void testFalhaAutenticacaoUsuario() throws UsuarioInvalidoException {
-		usuarioController.autenticarUsuario(anyString(), anyString());
+		usuarioController.autenticarUsuario("Inexistente", "SemSenha");
 	}
 }
