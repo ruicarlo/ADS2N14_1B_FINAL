@@ -9,7 +9,7 @@ import org.junit.Test;
 import model.Projeto;
 import model.Usuario;
 import controller.IssueController;
-import exceptions.controllers.UsuarioException.*;
+import exceptions.controllers.UsuarioException;
 import exceptions.controllers.IssueException.*;
 
 public class IssueControllerTest {
@@ -125,9 +125,9 @@ public class IssueControllerTest {
 		issueController.salvarIssue();
 	}
 
-	@Test(expected = UsuarioInvalidoException.class)
+	@Test(expected = UsuarioException.UsuarioInvalidoException.class)
 	public void testNaoSalvarIssueComUsuarioInexistenteNoArquivo() throws Exception {
-		doThrow(new UsuarioInvalidoException()).when(usuarioLogado).exists();
+		doThrow(new UsuarioException.UsuarioInvalidoException()).when(usuarioLogado).exists();
 		
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");

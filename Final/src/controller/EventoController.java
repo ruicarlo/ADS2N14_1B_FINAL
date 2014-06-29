@@ -3,7 +3,6 @@ package controller;
 import exceptions.controllers.EventoException;
 import exceptions.controllers.EventoException.*;
 import exceptions.controllers.UsuarioException;
-import exceptions.controllers.UsuarioException.*;
 import model.Issue;
 import model.Usuario;
 import model.Evento;
@@ -56,7 +55,7 @@ public class EventoController {
 		return this.evento.getIdUsuario();
 	}
 
-	public void setUsuario(Usuario usuario) throws UsuarioInvalidoException {
+	public void setUsuario(Usuario usuario) throws UsuarioException.UsuarioInvalidoException {
 		usuario.exists();
 		this.evento.setIdUsuario(usuario.getIdUsuario());
 	}

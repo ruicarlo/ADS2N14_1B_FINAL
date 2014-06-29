@@ -9,7 +9,7 @@ import org.junit.Test;
 import model.Issue;
 import model.Usuario;
 import controller.EventoController;
-import exceptions.controllers.UsuarioException.*;
+import exceptions.controllers.UsuarioException;
 import exceptions.controllers.EventoException.*;
 
 public class EventoControllerTest {
@@ -71,9 +71,9 @@ public class EventoControllerTest {
 		eventoController.salvarEvento();
 	}
 
-	@Test(expected = UsuarioInvalidoException.class)
+	@Test(expected = UsuarioException.UsuarioInvalidoException.class)
 	public void testNaoSalvarEventoComUsuarioInexistenteNoArquivo() throws Exception {
-		doThrow(new UsuarioInvalidoException()).when(usuarioLogado).exists();
+		doThrow(new UsuarioException.UsuarioInvalidoException()).when(usuarioLogado).exists();
 		
 		eventoController.setData("29/06/2014");
 		eventoController.setUsuario(usuarioLogado);

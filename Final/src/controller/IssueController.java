@@ -3,7 +3,6 @@ package controller;
 import exceptions.controllers.IssueException;
 import exceptions.controllers.IssueException.*;
 import exceptions.controllers.UsuarioException;
-import exceptions.controllers.UsuarioException.*;
 import model.Issue;
 import model.Projeto;
 import model.Usuario;
@@ -83,7 +82,7 @@ public class IssueController {
 		return this.issue.getIdUsuario();
 	}
 
-	public void setUsuario(Usuario usuario) throws UsuarioInvalidoException {
+	public void setUsuario(Usuario usuario) throws UsuarioException.UsuarioInvalidoException {
 		usuario.exists();
 		this.issue.setIdUsuario(usuario.getIdUsuario());
 	}
