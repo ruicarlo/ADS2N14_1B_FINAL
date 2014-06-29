@@ -1,13 +1,16 @@
 package view;
 
-import java.util.Scanner;
 import java.util.InputMismatchException;
 
 import estruturas.Vector;
 
 public class ProjetoView extends PadraoView {
 	String[] dadosProjeto = new String[2];	
-	
+
+	public void imprimirProjetoCadastradoComSucesso() {
+    	printMsg("Projeto cadastrado com sucesso");
+    }
+
 	public void imprimirSelecioneComando() {
     	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto: ");
     }

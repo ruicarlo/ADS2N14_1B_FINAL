@@ -16,9 +16,10 @@ public class ProjetoControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		projController = new ProjetoController();
-
 		usuarioLogado = mock(Usuario.class);
+		when(usuarioLogado.getIdUsuario()).thenReturn(1);
+		
+		projController = new ProjetoController(usuarioLogado);
 	}
 
 	@Test
