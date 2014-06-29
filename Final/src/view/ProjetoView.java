@@ -20,30 +20,6 @@ public class ProjetoView extends PadraoView {
     	printMsg("Digite a descricao do projeto: ");
     }
 
-    public void imprimirDigiteTaxa() {
-    	printMsg("Digite a taxa de investimento: ");
-    }
-
-
-    public int lerNumeroConta() {
-        int numConta = 0;
-        boolean validado = false;
-
-        do {
-            try {
-                this.imprimirDigiteNumeroConta();
-                numConta = this.teclado.nextInt();          
-                validado = true;
-            } catch(InputMismatchException e) {
-                System.out.println("Numero de conta invalido");
-                this.setTeclado();
-            } catch(Exception e) {
-                System.out.println(e.getMessage());
-            }
-        } while(!validado);
-        return numConta;
-    }
-
     public char lerComando() {
         char comando   = 'Q';
         boolean validado = false;
@@ -51,13 +27,13 @@ public class ProjetoView extends PadraoView {
         do {
             try {
                 this.imprimirSelecioneComando();
-                comando = Character.toUpperCase(this.teclado.next().charAt(0));System.out.println(comando);
+                comando = Character.toUpperCase(this.teclado.next().charAt(0));
                 validado = true;
             } catch(InputMismatchException e) {
-                System.out.println("Comando invalido");
+            	printMsgln("Comando invalido");
                 this.setTeclado();
             } catch(Exception e) {
-                System.out.println(e.getMessage());
+            	printMsgln(e.getMessage());
             }
         } while(!validado);
         return comando;
@@ -67,7 +43,7 @@ public class ProjetoView extends PadraoView {
     	if(lista.getSize() > 0) {
     		for(String itemLista : lista.asArray()) {
     			String[] registro = arquivo.explodirLinhaDoArquivo(itemLista);
-    			printMsgln(registro[2]);
+    			printMsgln(String.format("%d - %s",Integer.parseInt(registro[0]),registro[2]));
     		}
 		}
     }

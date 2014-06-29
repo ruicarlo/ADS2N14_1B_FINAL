@@ -77,6 +77,23 @@ public class ProjetoController {
 			case 'L':
 				projetoV.imprimirListaDeProjetos(projeto.retornarListaProjetos());
 			break;
+			case 'C':
+				this.cadastrarProjeto();
+			break;
 		}
+	}
+
+	private void cadastrarProjeto() {
+    	try {
+    		projetoV.imprimirDigiteTitulo();
+    		this.setTitulo(projetoV.lerString());
+    		
+    		projetoV.imprimirDigiteDescricao();
+    		this.setDescricao(projetoV.lerString());
+    		
+			this.salvarProjeto();
+    	} catch(Exception e) {
+    		projetoV.printMsg(e.getMessage());
+    	}
 	}
 }

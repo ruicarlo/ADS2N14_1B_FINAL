@@ -1,6 +1,7 @@
 package app;
 
 import static java.lang.System.out;
+import controller.ProjetoController;
 import controller.UsuarioController;
 import exceptions.controllers.UsuarioException.*;
 
@@ -15,6 +16,8 @@ public class Final {
 		/* LOGIN */
 		UsuarioController usuarioC = new UsuarioController();
 		usuarioC.login();
+		ProjetoController projetoC = new ProjetoController();
+		projetoC.telaInicialApp();
 	}
 
 }
