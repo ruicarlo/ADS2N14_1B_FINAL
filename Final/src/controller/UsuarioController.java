@@ -55,7 +55,7 @@ public class UsuarioController {
     	}
     }
 
-    public Usuario autenticarUsuario() throws FalhaDeAutenticacaoException {
+    public void autenticarUsuario() throws FalhaDeAutenticacaoException {
     	Vector<String> listaUsuarios = this.user.retornarListaUsuarios();
 
     	if(listaUsuarios.getSize() > 0) {
@@ -67,7 +67,7 @@ public class UsuarioController {
     				this.user.setNome(usuarioAux[1]);
     				this.user.setSenha(usuarioAux[2]);
     				this.user.setUsername(usuarioAux[3]);
-    				return this.user;
+    				return;
     			}
     		}
     	}
@@ -108,7 +108,8 @@ public class UsuarioController {
 			this.salvarUsuario();
 			this.usuarioV.msgUsuarioCadastrado();
 		} catch (Exception e) {
-			e.printStackTrace();
+			this.usuarioV.printMsgln(e.getMessage());
+			cadastrarUsuario();
 		}
 	}
 }
