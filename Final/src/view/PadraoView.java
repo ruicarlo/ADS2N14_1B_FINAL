@@ -18,6 +18,6 @@ public class PadraoView {
 	}
 	
 	public String lerString() {
-		return teclado.next();
+		return teclado.nextLine();
 	}
 }
