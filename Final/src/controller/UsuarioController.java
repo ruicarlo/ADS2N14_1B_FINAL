@@ -78,15 +78,17 @@ public class UsuarioController {
 		try {
 			this.user.setUsername(usuarioV.solicitaLogin());
 
-			if (!this.user.exists()) {
+			try {
+				this.user.exists();
+				this.user.setSenha(usuarioV.solicitaSenha());
+			} catch(Exception e) {
+				// caso não exista usuário
 				if(usuarioV.menuLogin() == 1) {
 					this.cadastrarUsuario();
 				} else {
 					this.login();
 					return;
 				}
-			} else {
-				this.user.setSenha(usuarioV.solicitaSenha());
 			}
 
 			this.autenticarUsuario();

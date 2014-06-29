@@ -2,6 +2,7 @@ package model;
 
 import estruturas.Arquivos;
 import estruturas.Vector;
+import exceptions.controllers.UsuarioException.*;
 
 public class Usuario {
 	final String nomeArquivo = "data/usuarios.txt";
@@ -74,17 +75,17 @@ public class Usuario {
     	return this.arquivo.getRegistros();
 	}
 
-    public boolean exists() {
+    public void exists() throws UsuarioInvalidoException {
     	Vector<String> usuarios = this.retornarListaUsuarios();
     	if(usuarios.getSize()>0) {
 	    	for(String usuario : usuarios.asArray()) {
 	    		String[] usuarioAux = this.arquivo.explodirLinhaDoArquivo(usuario);
 	    		if(usuarioAux[0].equals(Integer.toString(idUsuario))
 	    			|| usuarioAux[3].equals(username)) {
-	    			return true;
+	    			return;
 	    		}
 	    	}
     	}
-    	return false;
+    	throw new UsuarioInvalidoException();
     }
 }
