@@ -3,7 +3,7 @@
 3##0##Teste##Com descricao
 4##0##Teste##
 5##0##Teste##Com descricao
-6##0##Teste##Com descricao
+6##6##Teste##Com descricao
 7##0##Teste##Com descricao
 8##0##Teste##Com descricao
 9##0##Teste##Com descricao
@@ -12,7 +12,7 @@
 12##0##Teste##Com descricao
 13##0##Teste##Com descricao
 14##0##Teste##Com descricao
-15##0##Teste##Com descricao
+15##6##Teste##Com descricao
 16##0##Teste##Com descricao
 17##0##Teste##Com descricao
 18##0##Teste##Com descricao

@@ -1,6 +1,7 @@
 package controller;
 
 import view.ProjetoView;
+import estruturas.Vector;
 import exceptions.controllers.ProjetoException;
 import exceptions.controllers.ProjetoException.*;
 import model.Projeto;
@@ -79,7 +80,7 @@ public class ProjetoController {
 	private void executarComandoTeclado(char comando) {
 		switch(comando) {
 			case 'L':
-				projetoV.imprimirListaDeProjetos(projeto.retornarListaProjetos());
+				projetoV.imprimirListaDeProjetos(this.retornarListaProjetosDoUsuario());
 			break;
 			case 'C':
 				this.cadastrarProjeto();
@@ -101,5 +102,15 @@ public class ProjetoController {
     	} catch(Exception e) {
     		projetoV.printMsg(e.getMessage());
     	}
+	}
+	public Vector<String> retornarListaProjetosDoUsuario() {
+		Vector<String> todosProjetos = projeto.retornarListaProjetos();
+		Vector<String> projetosFiltrados = new Vector();
+		for(String registro : todosProjetos.asArray()){
+			if(Integer.parseInt(projeto.arquivo.explodirLinhaDoArquivo(registro)[1]) == projeto.getIdCriador()){
+				projetosFiltrados.append(registro);
+			}
+		}
+		return projetosFiltrados;
 	}
 }
