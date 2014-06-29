@@ -4,6 +4,8 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import model.Usuario;
+
 import org.junit.*;
 
 import static org.mockito.Mockito.*;
@@ -13,35 +15,49 @@ import exceptions.UsuarioInvalidoException;
 public class UsuarioControllerTest {
 
 	private UsuarioController usuarioController;
-	private String usuario;
+	public Usuario usuario;
+	private String dataHora;
 
 	@Before
 	public void setUp() {
 		usuarioController = new UsuarioController();
+		usuario = mock(Usuario.class);
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		usuario = dateFormat.format(date);
+		dataHora = dateFormat.format(date);
+	}
+
+	private void dadosDoUsuarioParaRetornar(String nome, String username, String senha) {
+		when(usuario.getNome()).thenReturn(nome);
+		when(usuario.getUsername()).thenReturn(username);
+		when(usuario.getSenha()).thenReturn(senha);
 	}
 
 	@Test
 	public void testSalvarUsuarioNoArquivo() throws Exception {
-		usuarioController.salvarUsuario(usuario, usuario, usuario);
+		dadosDoUsuarioParaRetornar(dataHora, dataHora, dataHora);
+		usuarioController.setUsuario(usuario);
+		usuarioController.salvarUsuario();
 	}
 
 	@Test(expected = Exception.class)
 	public void testNaoSalvarUsuarioFaltandoDadosNoArquivo() throws Exception {
-		usuarioController.salvarUsuario("Silva Silva", "", "");
+		dadosDoUsuarioParaRetornar("Silva Silva", " ", "a");
+		usuarioController.setUsuario(usuario);
+		usuarioController.salvarUsuario();
 	}
 
 	@Test(expected = Exception.class)
 	public void testNaoSalvarUsuarioExistenteNoArquivo() throws Exception {
-		usuarioController.salvarUsuario("Teste da Silva", "123", "testedasilva");
+		dadosDoUsuarioParaRetornar("Teste da Silva", "123", "testedasilva");
+		usuarioController.setUsuario(usuario);
+		usuarioController.salvarUsuario();
 	}
 
 	@Test
 	public void testAutenticacaoUsuario() throws UsuarioInvalidoException {
-		usuarioController.autenticarUsuario(usuario, usuario);
+		usuarioController.autenticarUsuario(dataHora, dataHora);
 	}
 
 	@Test(expected = UsuarioInvalidoException.class)
