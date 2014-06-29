@@ -74,7 +74,7 @@ public class UsuarioController {
     	throw new UsuarioException.FalhaDeAutenticacaoException();
     }
 
-	public void login() throws FalhaDeAutenticacaoException {
+	public Usuario login() throws FalhaDeAutenticacaoException {
 		try {
 			this.user.setUsername(usuarioV.solicitaLogin());
 
@@ -86,16 +86,15 @@ public class UsuarioController {
 				if(usuarioV.menuLogin() == 1) {
 					this.cadastrarUsuario();
 				} else {
-					this.login();
-					return;
+					return this.login();
 				}
 			}
 
 			this.autenticarUsuario();
-			usuarioV.printMsgln("Logado");
+			return this.user;
 		} catch (FalhaDeAutenticacaoException fda) {
 			usuarioV.printMsgln(fda.getMessage());
-			this.login();
+			return this.login();
 		}
 	}
 
