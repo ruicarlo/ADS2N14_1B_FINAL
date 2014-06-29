@@ -1,19 +1,25 @@
 package view;
 
 public class UsuarioView extends PadraoView {
-	String[] dadosUsuario = new String[3];
 
-	public String[] solicitaLogin() {
+	public String solicitaLogin() {
 
 		printMsg("Usuário:");
-		dadosUsuario[2] = lerString();
-		printMsg("Senha:");
-		dadosUsuario[1] = lerString();
+		String username = lerString();
 
-		return dadosUsuario;
+		return username;
+	}
+
+	public String solicitaSenha() {
+
+		printMsg("Senha:");
+		String senha = lerString();
+
+		return senha;
 	}
 
 	public int menuLogin() {
+		printMsgln("Usuário não cadastrado.");
 		printMsgln("Deseja cadastrar novo usuário? (sim/nao)");
 		printMsg("Para tentar o login novamente escolha \"nao\".");
 		String opcao = lerString(); 
@@ -32,6 +38,8 @@ public class UsuarioView extends PadraoView {
 	}
 
 	public String[] formularioCadUsuario() {
+		String[] dadosUsuario = new String[3];
+
 		printMsgln("..::Cadastro de Usuario::..");
 
 		printMsg("Nome:");
@@ -42,5 +50,9 @@ public class UsuarioView extends PadraoView {
 		dadosUsuario[1] = lerString();
 
 		return dadosUsuario;
+	}
+
+	public void msgUsuarioCadastrado() {
+		printMsgln("Usuário cadastrado com sucesso.");
 	}
 }

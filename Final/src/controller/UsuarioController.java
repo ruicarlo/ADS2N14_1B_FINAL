@@ -55,13 +55,14 @@ public class UsuarioController {
     	}
     }
 
-    public Usuario autenticarUsuario(String username, String senha) throws FalhaDeAutenticacaoException {
+    public Usuario autenticarUsuario() throws FalhaDeAutenticacaoException {
     	Vector<String> listaUsuarios = this.user.retornarListaUsuarios();
 
     	if(listaUsuarios.getSize() > 0) {
     		for(String usuario : listaUsuarios.asArray()) {
     			String[] usuarioAux = this.user.arquivo.explodirLinhaDoArquivo(usuario);
-    			if(usuarioAux[3].equalsIgnoreCase(username) && usuarioAux[2].equalsIgnoreCase(senha)) {
+    			if(usuarioAux[3].equalsIgnoreCase(this.user.getUsername())
+    					&& usuarioAux[2].equalsIgnoreCase(this.user.getSenha())) {
     				this.user.setIdUsuario(Integer.parseInt(usuarioAux[0]));
     				this.user.setNome(usuarioAux[1]);
     				this.user.setSenha(usuarioAux[2]);
@@ -75,18 +76,23 @@ public class UsuarioController {
 
 	public void login() throws FalhaDeAutenticacaoException {
 		try {
-			String dadosUsuario[] = usuarioV.solicitaLogin();
+			this.user.setUsername(usuarioV.solicitaLogin());
 
-			this.autenticarUsuario(dadosUsuario[2], dadosUsuario[1]);
-
-			usuarioV.printMsgln("Logado");
-		} catch (FalhaDeAutenticacaoException uI) {
-			usuarioV.printMsg(uI.getMessage());
-
-			if(usuarioV.menuLogin() == 1) {
-				this.cadastrarUsuario();
+			if (!this.user.exists()) {
+				if(usuarioV.menuLogin() == 1) {
+					this.cadastrarUsuario();
+				} else {
+					this.login();
+					return;
+				}
+			} else {
+				this.user.setSenha(usuarioV.solicitaSenha());
 			}
 
+			this.autenticarUsuario();
+			usuarioV.printMsgln("Logado");
+		} catch (FalhaDeAutenticacaoException fda) {
+			usuarioV.printMsgln(fda.getMessage());
 			this.login();
 		}
 	}
@@ -100,6 +106,7 @@ public class UsuarioController {
 
 		try {
 			this.salvarUsuario();
+			this.usuarioV.msgUsuarioCadastrado();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

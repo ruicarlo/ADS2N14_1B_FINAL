@@ -57,11 +57,15 @@ public class UsuarioControllerTest {
 
 	@Test
 	public void testAutenticacaoUsuario() throws FalhaDeAutenticacaoException {
-		usuarioController.autenticarUsuario(dataHora, dataHora);
+		dadosDoUsuarioParaRetornar(dataHora, dataHora, dataHora);
+		usuarioController.setUsuario(usuario);
+		usuarioController.autenticarUsuario();
 	}
 
 	@Test(expected = FalhaDeAutenticacaoException.class)
 	public void testFalhaAutenticacaoUsuario() throws FalhaDeAutenticacaoException {
-		usuarioController.autenticarUsuario("Inexistente", "SemSenha");
+		dadosDoUsuarioParaRetornar("usuario", "Inexistente", "SemSenha");
+		usuarioController.setUsuario(usuario);
+		usuarioController.autenticarUsuario();
 	}
 }
