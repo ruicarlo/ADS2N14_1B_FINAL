@@ -46,7 +46,7 @@ public class Projeto {
 	}
 
     private String getDadosParaSalvarArquivo() {
-        return String.format("%d##%d#%s##%s", this.getProximoIdProjeto(),
+        return String.format("%d##%d##%s##%s", this.getProximoIdProjeto(),
         		                              this.idCriador,
         		                              this.titulo,
         		                              this.descricao);
