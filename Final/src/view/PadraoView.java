@@ -5,11 +5,15 @@ import static java.lang.System.out;
 
 import java.util.Scanner;
 
+import estruturas.Arquivos;
+
 public class PadraoView {
 	Scanner teclado;
-
+	Arquivos arquivo;
+	
 	public PadraoView() {
 		this.setTeclado();
+		this.arquivo = new Arquivos();
 	}
 
 	protected void setTeclado() {

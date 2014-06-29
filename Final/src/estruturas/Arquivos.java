@@ -12,6 +12,8 @@ import java.io.OutputStreamWriter;
 public class Arquivos {
     private String nome;
     
+    public Arquivos(){}
+    
     public Arquivos(String nome) {
         this.nome = nome;
     }

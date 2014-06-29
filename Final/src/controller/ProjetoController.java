@@ -1,5 +1,6 @@
 package controller;
 
+import view.ProjetoView;
 import exceptions.controllers.ProjetoException;
 import exceptions.controllers.ProjetoException.*;
 import model.Projeto;
@@ -7,6 +8,7 @@ import model.Usuario;
 
 public class ProjetoController {
 	Projeto projeto = new Projeto();
+	ProjetoView projetoV = new ProjetoView();
 	
 	public void salvarProjeto() throws TituloInvalidoException,
 	                                   DescricaoInvalidaException,
@@ -64,5 +66,17 @@ public class ProjetoController {
 	public void setCriador(Usuario usuario) throws Exception {
 		usuario.exists();
 		this.projeto.setIdCriador(usuario.getIdUsuario());
+	}
+	
+	public void telaInicialApp() {
+		this.executarComandoTeclado(projetoV.lerComando());
+	}
+
+	private void executarComandoTeclado(char comando) {
+		switch(comando) {
+			case 'L':
+				projetoV.imprimirListaDeProjetos(projeto.retornarListaProjetos());
+			break;
+		}
 	}
 }
