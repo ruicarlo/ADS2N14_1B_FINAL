@@ -1,7 +1,6 @@
 package controller;
 
 import exceptions.controllers.EventoException;
-import exceptions.controllers.UsuarioException.UsuarioInvalidoException;
 import exceptions.controllers.EventoException.*;
 import exceptions.controllers.UsuarioException;
 import exceptions.controllers.UsuarioException.*;

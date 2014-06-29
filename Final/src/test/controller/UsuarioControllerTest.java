@@ -10,12 +10,7 @@ import org.junit.*;
 
 import static org.mockito.Mockito.*;
 import controller.UsuarioController;
-<<<<<<< HEAD
 import exceptions.controllers.UsuarioException.*;
-=======
-import estruturas.Vector;
-import exceptions.UsuarioInvalidoException;
->>>>>>> origin/master
 
 public class UsuarioControllerTest {
 
@@ -61,22 +56,12 @@ public class UsuarioControllerTest {
 	}
 
 	@Test
-<<<<<<< HEAD
 	public void testAutenticacaoUsuario() throws FalhaDeAutenticacaoException {
-		usuarioController.autenticarUsuario(usuario, usuario);
+		usuarioController.autenticarUsuario(dataHora, dataHora);
 	}
 
 	@Test(expected = FalhaDeAutenticacaoException.class)
 	public void testFalhaAutenticacaoUsuario() throws FalhaDeAutenticacaoException {
-		usuarioController.autenticarUsuario(anyString(), anyString());
-=======
-	public void testAutenticacaoUsuario() throws UsuarioInvalidoException {
-		usuarioController.autenticarUsuario(dataHora, dataHora);
-	}
-
-	@Test(expected = UsuarioInvalidoException.class)
-	public void testFalhaAutenticacaoUsuario() throws UsuarioInvalidoException {
 		usuarioController.autenticarUsuario("Inexistente", "SemSenha");
->>>>>>> origin/master
 	}
 }

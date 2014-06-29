@@ -9,44 +9,8 @@ import model.Usuario;
 public class UsuarioController {
 	Usuario user = new Usuario();
 	UsuarioView usuarioV = new UsuarioView();
-	
-<<<<<<< HEAD
-	public void salvarUsuario(String nome, String senha, String username) throws NomeInvalidoException,
-	                                                                             SenhaInvalidaException,
-	                                                                             UsernameInvalidoException,
-	                                                                             UsuarioJaCadastradoException,
-	                                                                             Exception {
-		this.validarNome(nome);
-		this.validarSenha(senha);
-		this.validarUsername(username);
-		this.verificarSeUsuarioJaExiste(username);
-		this.user.setNome(nome);
-		this.user.setSenha(senha);
-		this.user.setUsername(username);
-		this.user.salvarUsuario();
-	}
 
-	private void validarNome(String nome) throws NomeInvalidoException {
-		if(nome.isEmpty()) {
-			throw new UsuarioException.NomeInvalidoException();
-		}
-	}
-	
-	private void validarSenha(String senha) throws SenhaInvalidaException {
-		if(senha.isEmpty()) {
-			throw new UsuarioException.SenhaInvalidaException();
-		}
-	}
-
-	private void validarUsername(String username) throws UsernameInvalidoException {
-		if(username.isEmpty()) {
-			throw new UsuarioException.UsernameInvalidoException();
-		}
-	}
-
-    private void verificarSeUsuarioJaExiste(String username) throws UsuarioJaCadastradoException {
-=======
-	public void salvarUsuario() throws Exception {
+	public void salvarUsuario() throws Exception  {
 		this.validarNome();
 		this.validarSenha();
 		this.validarUsername();
@@ -79,20 +43,14 @@ public class UsuarioController {
 	}
 
     private void verificarSeUsuarioJaExiste() throws Exception {
->>>>>>> origin/master
     	Vector<String> usuarios = this.user.retornarListaUsuarios();
     	if(usuarios.getSize()<1){
     		return;
     	}
     	for(String usuario : usuarios.asArray()) {
     		String[] usuarioAux = this.user.arquivo.explodirLinhaDoArquivo(usuario);
-<<<<<<< HEAD
-    		if(!usuarioAux[3].isEmpty() && usuarioAux[3].equalsIgnoreCase(username)) {
-    			throw new UsuarioException.UsuarioJaCadastradoException();
-=======
     		if(!usuarioAux[3].isEmpty() && usuarioAux[3].equalsIgnoreCase(this.user.getUsername())) {
-    			throw new Exception("Este usu�rio j� est� cadastrado no sistema");
->>>>>>> origin/master
+    			throw new UsuarioException.UsuarioJaCadastradoException();
     		}
     	}
     }
@@ -115,14 +73,14 @@ public class UsuarioController {
     	throw new UsuarioException.FalhaDeAutenticacaoException();
     }
 
-	public void login() {
+	public void login() throws FalhaDeAutenticacaoException {
 		try {
 			String dadosUsuario[] = usuarioV.solicitaLogin();
 
 			this.autenticarUsuario(dadosUsuario[2], dadosUsuario[1]);
 
 			usuarioV.printMsgln("Logado");
-		} catch (UsuarioInvalidoException uI) {
+		} catch (FalhaDeAutenticacaoException uI) {
 			usuarioV.printMsg(uI.getMessage());
 
 			if(usuarioV.menuLogin() == 1) {
