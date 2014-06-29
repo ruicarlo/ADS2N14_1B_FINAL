@@ -3,8 +3,11 @@ package controller;
 import exceptions.controllers.IssueException;
 import exceptions.controllers.IssueException.*;
 import exceptions.controllers.UsuarioException;
+import model.Criticidade;
+import model.Estado;
 import model.Issue;
 import model.Projeto;
+import model.Tipo;
 import model.Usuario;
 
 public class IssueController {
@@ -109,29 +112,29 @@ public class IssueController {
 		this.validarTitulo();
 	}
 	
-	public String getCriticidade() {
+	public Criticidade getCriticidade() {
 		return this.issue.getCriticidade();
 	}
 	
-	public void setCriticidade(String criticidade) throws CriticidadeInvalidaException {
+	public void setCriticidade(Criticidade criticidade) throws CriticidadeInvalidaException {
 		this.issue.setCriticidade(criticidade);
 		this.validarCriticidade();
 	}
 	
-	public String getTipo() {
+	public Tipo getTipo() {
 		return this.issue.getTipo();
 	}
 	
-	public void setTipo(String tipo) throws TipoInvalidoException {
+	public void setTipo(Tipo tipo) throws TipoInvalidoException {
 		this.issue.setTipo(tipo);
 		this.validarTipo();
 	}
 	
-	public String getStatus() {
+	public Estado getStatus() {
 		return this.issue.getStatus();
 	}
 	
-	public void setStatus(String status) throws StatusInvalidoException {
+	public void setStatus(Estado status) throws StatusInvalidoException {
 		this.issue.setStatus(status);
 		this.validarStatus();
 	}

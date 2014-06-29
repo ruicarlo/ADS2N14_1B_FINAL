@@ -10,9 +10,9 @@ public class Issue {
 	private int idProjeto;
 	private String descricao;
 	private String titulo;
-	private String criticidade;
-	private String tipo;
-	private String status;
+	private Criticidade criticidade;
+	private Tipo tipo;
+	private Estado status;
 	
 	public Arquivos arquivo = new Arquivos(this.nomeArquivo);
 
@@ -60,27 +60,27 @@ public class Issue {
 		this.titulo = titulo;
 	}
 	
-	public String getCriticidade() {
+	public Criticidade getCriticidade() {
 		return criticidade;
 	}
 	
-	public void setCriticidade(String criticidade) {
+	public void setCriticidade(Criticidade criticidade) {
 		this.criticidade = criticidade;
 	}
 	
-	public String getTipo() {
+	public Tipo getTipo() {
 		return tipo;
 	}
 	
-	public void setTipo(String tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 	
-	public String getStatus() {
+	public Estado getStatus() {
 		return status;
 	}
 	
-	public void setStatus(String status) {
+	public void setStatus(Estado status) {
 		this.status = status;
 	}
 

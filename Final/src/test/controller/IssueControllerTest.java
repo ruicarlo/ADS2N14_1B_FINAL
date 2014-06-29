@@ -6,7 +6,10 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.Criticidade;
+import model.Estado;
 import model.Projeto;
+import model.Tipo;
 import model.Usuario;
 import controller.IssueController;
 import exceptions.controllers.UsuarioException;
@@ -34,10 +37,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("Criticidade de teste");
-		issueController.setTipo("Tipo de teste");
+		issueController.setCriticidade(Criticidade.BLOCKER);
+		issueController.setTipo(Tipo.ENHANCEMENT);
 		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("Status de teste");
+		issueController.setStatus(Estado.ATRIBUIDO);
 		issueController.salvarIssue();
 	}
 
@@ -48,10 +51,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("Criticidade de teste");
-		issueController.setTipo("Tipo de teste");
+		issueController.setCriticidade(Criticidade.CRITICAL);
+		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("Status de teste");
+		issueController.setStatus(Estado.CLOSED);
 		issueController.salvarIssue();
 	}
 
@@ -62,10 +65,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("Criticidade de teste");
-		issueController.setTipo("Tipo de teste");
+		issueController.setCriticidade(Criticidade.LOW);
+		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("Status de teste");
+		issueController.setStatus(Estado.NOVO);
 		issueController.salvarIssue();
 	}
 
@@ -76,10 +79,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("");
-		issueController.setTipo("Tipo de teste");
+//		issueController.setCriticidade(Criticidade.HIGH);
+		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("Status de teste");
+		issueController.setStatus(Estado.ABERTO);
 		issueController.salvarIssue();
 	}
 
@@ -90,10 +93,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("Criticidade de teste");
-		issueController.setTipo("");
+		issueController.setCriticidade(Criticidade.MEDIUM);
+//		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("Status de teste");
+		issueController.setStatus(Estado.DUPLICADO);
 		issueController.salvarIssue();
 	}
 
@@ -104,10 +107,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("Criticidade de teste");
-		issueController.setTipo("Tipo de teste");
+		issueController.setCriticidade(Criticidade.HIGH);
+		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("");
+//		issueController.setStatus(Estado.NOVO);
 		issueController.salvarIssue();
 	}
 
@@ -118,10 +121,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("Criticidade de teste");
-		issueController.setTipo("Tipo de teste");
+		issueController.setCriticidade(Criticidade.HIGH);
+		issueController.setTipo(Tipo.BUG);
 //		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("Status de teste");
+		issueController.setStatus(Estado.EM_DEV);
 		issueController.salvarIssue();
 	}
 
@@ -132,10 +135,10 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-		issueController.setCriticidade("Criticidade de teste");
-		issueController.setTipo("Tipo de teste");
+		issueController.setCriticidade(Criticidade.HIGH);
+		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
-		issueController.setStatus("Status de teste");
+		issueController.setStatus(Estado.NOVO);
 		issueController.salvarIssue();
 	}
 }
