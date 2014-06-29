@@ -23,6 +23,8 @@ public class IssueControllerTest {
 
 		usuarioLogado  = mock(Usuario.class);
 		projetoDoIssue = mock(Projeto.class);
+		when(projetoDoIssue.getIdProjeto()).thenReturn(1);
+		when(usuarioLogado.getIdUsuario()).thenReturn(1);
 	}
 
 	@Test
@@ -109,8 +111,22 @@ public class IssueControllerTest {
 		issueController.salvarIssue();
 	}
 
+	@Test(expected = ProjetoInvalidoException.class)
+	public void testNaoSalvarIssueComProjetoInexistenteNoArquivo() throws Exception {
+		doNothing().when(usuarioLogado).exists();
+
+		issueController.setTitulo("Titulo de teste");
+		issueController.setDescricao("Descricao de teste");
+		issueController.setUsuario(usuarioLogado);
+		issueController.setCriticidade("Criticidade de teste");
+		issueController.setTipo("Tipo de teste");
+//		issueController.setProjeto(projetoDoIssue);
+		issueController.setStatus("Status de teste");
+		issueController.salvarIssue();
+	}
+
 	@Test(expected = UsuarioInvalidoException.class)
-	public void testNaoSalvarProjetoComUsuarioInexistenteNoArquivo() throws Exception {
+	public void testNaoSalvarIssueComUsuarioInexistenteNoArquivo() throws Exception {
 		doThrow(new UsuarioInvalidoException()).when(usuarioLogado).exists();
 		
 		issueController.setTitulo("Titulo de teste");

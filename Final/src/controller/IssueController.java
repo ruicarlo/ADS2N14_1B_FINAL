@@ -9,8 +9,14 @@ import model.Usuario;
 
 public class IssueController {
 	Issue issue = new Issue();
-	
-	public void salvarIssue() throws Exception {
+
+	public void salvarIssue() throws CriticidadeInvalidaException,
+	                                 DescricaoInvalidaException,
+	                                 ProjetoInvalidoException,
+	                                 exceptions.controllers.IssueException.UsuarioInvalidoException,
+	                                 StatusInvalidoException,
+	                                 TipoInvalidoException,
+	                                 TituloInvalidoException {
 		this.validarCriticidade();
 		this.validarDescricao();
 		this.validarIdProjeto();
@@ -52,13 +58,13 @@ public class IssueController {
 	}
 
 	private void validarIdProjeto() throws ProjetoInvalidoException {
-		if(this.issue.getIdProjeto() < 0) {
+		if(this.issue.getIdProjeto() < 1) {
 			throw new IssueException.ProjetoInvalidoException();
 		}
 	}
 	
 	private void validarUsuario() throws exceptions.controllers.IssueException.UsuarioInvalidoException  {
-		if(this.issue.getIdUsuario() < 0) {
+		if(this.issue.getIdUsuario() < 1) {
 			throw new IssueException.UsuarioInvalidoException();
 		}
 	}

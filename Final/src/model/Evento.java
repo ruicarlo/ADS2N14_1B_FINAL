@@ -58,7 +58,7 @@ public class Evento {
         		                                  this.comentario);
     }
 
-    public void armazenarIssueNoArquivo() {
+    public void armazenarEventoNoArquivo() {
         Arquivos arquivo = new Arquivos(this.nomeArquivo);
         String[] conteudo = {this.getDadosParaSalvarArquivo()};
         arquivo.escrever(conteudo, false);
