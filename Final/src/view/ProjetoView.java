@@ -8,7 +8,7 @@ public class ProjetoView extends PadraoView {
 	String[] dadosProjeto = new String[2];	
 
 	public void imprimirProjetoCadastradoComSucesso() {
-    	printMsg("Projeto cadastrado com sucesso");
+    	printMsgln("Projeto cadastrado com sucesso");
     }
 
 	public void imprimirUsuarioSemProjeto() {
@@ -16,7 +16,7 @@ public class ProjetoView extends PadraoView {
     }
 
 	public void imprimirSelecioneComando() {
-    	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto: ");
+    	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto ou ID do Projeto para gerenciar Issues: ");
     }
 
     public void imprimirDigiteTitulo() {
@@ -27,14 +27,14 @@ public class ProjetoView extends PadraoView {
     	printMsg("Digite a descricao do projeto: ");
     }
 
-    public char lerComando() {
-        char comando   = 'Q';
+    public String lerComando() {
+        String comando   = "Q";
         boolean validado = false;
 
         do {
             try {
                 this.imprimirSelecioneComando();
-                comando = Character.toUpperCase(this.teclado.next().charAt(0));
+                comando = this.lerString().toUpperCase();
                 validado = true;
             } catch(InputMismatchException e) {
             	printMsgln("Comando invalido");

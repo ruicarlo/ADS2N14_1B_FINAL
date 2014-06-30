@@ -75,13 +75,13 @@ public class ProjetoController {
 		this.projeto.setIdCriador(usuario.getIdUsuario());
 	}
 	
-	public void telaInicialApp() {
-		this.executarComandoTeclado(projetoV.lerComando());
+	public Projeto telaInicialApp() {
+		return this.executarComandoTeclado(projetoV.lerComando());
 	}
 
-	private void executarComandoTeclado(char comando) {
+	private Projeto executarComandoTeclado(String comando) {
 		switch(comando) {
-			case 'L':
+			case "L":
 				Vector<String> listaProjetos = this.retornarListaProjetosDoUsuario();
 				if(listaProjetos.getSize() > 0) {
 					projetoV.imprimirListaDeProjetos(listaProjetos);
@@ -91,10 +91,21 @@ public class ProjetoController {
 					this.telaInicialApp();
 				}
 			break;
-			case 'C':
+			case "C":
 				this.cadastrarProjeto();
 			break;
+
+			default:  
+				try {
+					return this.buscarProjeto(Integer.parseInt(comando));
+				} catch (NumberFormatException nfe) {
+					projetoV.printMsgln("Opção inválida.");
+				} catch (ProjetoNaoEcontrado pne) {
+					projetoV.printMsgln(pne.getMessage());
+				}
 		}
+
+		return this.telaInicialApp();
 	}
 
 	private void cadastrarProjeto() {
@@ -123,22 +134,18 @@ public class ProjetoController {
 		return projetosFiltrados;
 	}
 
-	public ProjetoController buscarProjeto(int idProjeto) throws Exception{
-		try {
-			ProjetoController projetoRetorno = new ProjetoController(criador);
-			for (String proj : retornarListaProjetosDoUsuario().asArray()) {
-				String[] registro = this.projeto.arquivo.explodirLinhaDoArquivo(proj);
-				if(Integer.parseInt(registro[0]) == idProjeto) {
-					projetoRetorno.projeto.setIdProjeto(Integer.parseInt(registro[0]));
-					projetoRetorno.projeto.setIdCriador(Integer.parseInt(registro[1]));
-					projetoRetorno.projeto.setTitulo(registro[2]);
-					projetoRetorno.projeto.setDescricao(registro[3]);
-					return projetoRetorno;
-				}
+	public Projeto buscarProjeto(int idProjeto) throws ProjetoNaoEcontrado {
+		Projeto projetoRetorno = new Projeto();
+		for (String proj : retornarListaProjetosDoUsuario().asArray()) {
+			String[] registro = this.projeto.arquivo.explodirLinhaDoArquivo(proj);
+			if(Integer.parseInt(registro[0]) == idProjeto) {
+				projetoRetorno.setIdProjeto(Integer.parseInt(registro[0]));
+				projetoRetorno.setIdCriador(Integer.parseInt(registro[1]));
+				projetoRetorno.setTitulo(registro[2]);
+				projetoRetorno.setDescricao(registro[3]);
+				return projetoRetorno;
 			}
-			throw new ProjetoException.ProjetoNaoEcontrado();
-		}catch(Exception e) {
-			throw e;
 		}
+		throw new ProjetoException.ProjetoNaoEcontrado();
 	}
 }

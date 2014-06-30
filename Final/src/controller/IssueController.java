@@ -17,7 +17,7 @@ public class IssueController {
 	Issue issue = new Issue();
 	IssueView issueV = new IssueView();
 
-	public IssueController(Projeto projeto) throws Exception {
+	public IssueController(Projeto projeto) throws ProjetoNaoEcontrado {
 		this.setProjeto(projeto);
 	}
 

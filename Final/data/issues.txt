@@ -32,3 +32,6 @@
 32##1##1##Descricao de teste##Titulo de teste##HIGH##BUG##EM_DEV
 33##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
 34##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+35##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+36##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+37##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
