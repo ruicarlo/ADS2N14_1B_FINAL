@@ -17,7 +17,7 @@ public class PadraoView {
 	}
 
 	public void setTeclado() {
-        this.teclado = new Scanner(System.in);
+        this.teclado = new Scanner(in);
     }
 
 	public void printMsg(String msg) {

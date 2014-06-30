@@ -12,6 +12,8 @@ import model.Projeto;
 import model.Tipo;
 import model.Usuario;
 import controller.IssueController;
+import exceptions.controllers.ProjetoException;
+import exceptions.controllers.ProjetoException.ProjetoNaoEcontrado;
 import exceptions.controllers.UsuarioException;
 import exceptions.controllers.IssueException.*;
 
@@ -22,12 +24,13 @@ public class IssueControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		issueController = new IssueController();
-
 		usuarioLogado  = mock(Usuario.class);
 		projetoDoIssue = mock(Projeto.class);
+
 		when(projetoDoIssue.getIdProjeto()).thenReturn(1);
 		when(usuarioLogado.getIdUsuario()).thenReturn(1);
+
+		issueController = new IssueController(projetoDoIssue);
 	}
 
 	@Test
@@ -114,16 +117,17 @@ public class IssueControllerTest {
 		issueController.salvarIssue();
 	}
 
-	@Test(expected = ProjetoInvalidoException.class)
+	@Test(expected = ProjetoNaoEcontrado.class)
 	public void testNaoSalvarIssueComProjetoInexistenteNoArquivo() throws Exception {
 		doNothing().when(usuarioLogado).exists();
+		doThrow(new ProjetoException.ProjetoNaoEcontrado()).when(projetoDoIssue).exists();
 
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
 		issueController.setCriticidade(Criticidade.HIGH);
 		issueController.setTipo(Tipo.BUG);
-//		issueController.setProjeto(projetoDoIssue);
+		issueController.setProjeto(projetoDoIssue);
 		issueController.setStatus(Estado.EM_DEV);
 		issueController.salvarIssue();
 	}

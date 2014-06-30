@@ -3,7 +3,7 @@
 3##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
 4##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
 5##1##1##Criar sistema de issue de acordo com a solicitacao##Sistema de issues##Alta##B##N
-6##0##0##Com descricao##Teste##A##B##A
+6##0##15##Com descricao##Teste##A##B##A
 7##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 8##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 9##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
@@ -13,9 +13,22 @@
 13##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 14##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 15##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
-16##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+16##0##15##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 17##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 18##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 19##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 20##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
 21##0##0##Descricao de teste##Titulo de teste##Criticidade de teste##Tipo de teste##Status de teste
+22##1##1##Descricao de teste##Titulo de teste##HIGH##BUG##EM_DEV
+23##1##15##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+24##1##1##Descricao de teste##Titulo de teste##HIGH##BUG##EM_DEV
+25##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+26##1##15##Descricao de teste##Titulo de teste##HIGH##BUG##EM_DEV
+27##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+28##1##1##Descricao de teste##Titulo de teste##HIGH##BUG##EM_DEV
+29##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+30##1##1##Descricao de teste##Titulo de teste##HIGH##BUG##EM_DEV
+31##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+32##1##1##Descricao de teste##Titulo de teste##HIGH##BUG##EM_DEV
+33##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+34##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO

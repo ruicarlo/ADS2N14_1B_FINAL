@@ -1,6 +1,9 @@
 package controller;
 
+import view.IssueView;
+import estruturas.Vector;
 import exceptions.controllers.IssueException;
+import exceptions.controllers.ProjetoException.ProjetoNaoEcontrado;
 import exceptions.controllers.IssueException.*;
 import exceptions.controllers.UsuarioException;
 import model.Criticidade;
@@ -12,11 +15,16 @@ import model.Usuario;
 
 public class IssueController {
 	Issue issue = new Issue();
+	IssueView issueV = new IssueView();
+
+	public IssueController(Projeto projeto) throws Exception {
+		this.setProjeto(projeto);
+	}
 
 	public void salvarIssue() throws CriticidadeInvalidaException,
 	                                 DescricaoInvalidaException,
 	                                 ProjetoInvalidoException,
-	                                 exceptions.controllers.IssueException.UsuarioInvalidoException,
+	                                 IssueException.UsuarioInvalidoException,
 	                                 StatusInvalidoException,
 	                                 TipoInvalidoException,
 	                                 TituloInvalidoException {
@@ -37,19 +45,19 @@ public class IssueController {
 	}
 	
 	private void validarCriticidade() throws CriticidadeInvalidaException {
-		if(this.issue.getCriticidade() == null || this.issue.getCriticidade().equals("")) {
+		if(!(this.issue.getCriticidade() instanceof Criticidade)) {
 			throw new IssueException.CriticidadeInvalidaException();
 		}
 	}
 
 	private void validarTipo() throws TipoInvalidoException {
-		if(this.issue.getTipo() == null || this.issue.getTipo().equals("")) {
+		if(!(this.issue.getTipo() instanceof Tipo)) {
 			throw new IssueException.TipoInvalidoException();
 		}
 	}
 
 	private void validarStatus() throws StatusInvalidoException {
-		if(this.issue.getStatus() == null || this.issue.getStatus().equals("")) {
+		if(!(this.issue.getStatus() instanceof Estado)) {
 			throw new IssueException.StatusInvalidoException();
 		}
 	}
@@ -76,9 +84,9 @@ public class IssueController {
 		return this.issue.getIdProjeto();
 	}
 
-	public void setProjeto(Projeto projeto) throws Exception {
+	public void setProjeto(Projeto projeto) throws ProjetoNaoEcontrado {
+		projeto.exists();
 		this.issue.setIdProjeto(projeto.getIdProjeto());
-		this.validarIdProjeto();
 	}
 
 	public int getIdUsuario() {
@@ -137,5 +145,31 @@ public class IssueController {
 	public void setStatus(Estado status) throws StatusInvalidoException {
 		this.issue.setStatus(status);
 		this.validarStatus();
+	}
+	
+	public void gerenciarIssues() {
+		this.executarComandoTeclado(issueV.lerComando());
+	}
+
+	private void executarComandoTeclado(char comando) {
+		switch(comando) {
+			case 'L':
+				issueV.imprimirListaDeIssues(this.retornarIssuesDoProjeto());
+			break;
+			case 'C':
+//				this.cadastrarIssue();
+			break;
+		}
+	}
+
+	public Vector<String> retornarIssuesDoProjeto() {
+		Vector<String> todasIssues = issue.retornarListaIssues();
+		Vector<String> issuesFiltrados = new Vector<String>();
+		for(String registro : todasIssues.asArray()){
+			if(Integer.parseInt(issue.arquivo.explodirLinhaDoArquivo(registro)[2]) == issue.getIdProjeto()){
+				issuesFiltrados.append(registro);
+			}
+		}
+		return issuesFiltrados;
 	}
 }

@@ -2,6 +2,7 @@ package app;
 
 import static java.lang.System.out;
 import model.Usuario;
+//import controller.IssueController;
 import controller.ProjetoController;
 import controller.UsuarioController;
 import exceptions.controllers.UsuarioException.*;
@@ -21,6 +22,9 @@ public class Final {
 
 		ProjetoController projetoC = new ProjetoController(usuarioLogado);
 		projetoC.telaInicialApp();
+
+//		IssueController issueC = new IssueController(projeto);
+//		issueC.gerenciarIssues();
 	}
 
 }

@@ -2,6 +2,7 @@ package model;
 
 import estruturas.Arquivos;
 import estruturas.Vector;
+import exceptions.controllers.ProjetoException.*;
 
 public class Projeto {
 	final String nomeArquivo = "data/projetos.txt";
@@ -65,4 +66,17 @@ public class Projeto {
 	public Vector<String> retornarListaProjetos() {
     	return this.arquivo.getRegistros();
 	}
+
+    public void exists() throws ProjetoNaoEcontrado {
+    	Vector<String> projetos = this.retornarListaProjetos();
+    	if(projetos.getSize()>0) {
+	    	for(String projeto : projetos.asArray()) {
+	    		String[] usuarioAux = this.arquivo.explodirLinhaDoArquivo(projeto);
+	    		if(usuarioAux[0].equals(Integer.toString(idProjeto))) {
+	    			return;
+	    		}
+	    	}
+    	}
+    	throw new ProjetoNaoEcontrado();
+    }
 }
