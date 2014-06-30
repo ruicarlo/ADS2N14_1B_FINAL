@@ -24,4 +24,11 @@ public class ProjetoException {
 			super("Para cadastrar um projeto o usuario deve ser definido");
 		}
 	}
+	public static class ProjetoNaoEcontrado extends Exception {
+		private static final long serialVersionUID = 1L;
+		
+		public ProjetoNaoEcontrado() {
+			super("Projeto nao encontrado"); 
+		}
+	}
 }

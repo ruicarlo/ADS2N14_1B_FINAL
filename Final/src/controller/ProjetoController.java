@@ -10,8 +10,10 @@ import model.Usuario;
 public class ProjetoController {
 	Projeto projeto = new Projeto();
 	ProjetoView projetoV = new ProjetoView();
+	Usuario criador;
 
 	public ProjetoController(Usuario criador) throws Exception {
+		this.criador = criador;
 		this.setCriador(criador);
 	}
 
@@ -119,5 +121,24 @@ public class ProjetoController {
 			}
 		}
 		return projetosFiltrados;
+	}
+
+	public ProjetoController buscarProjeto(int idProjeto) throws Exception{
+		try {
+			ProjetoController projetoRetorno = new ProjetoController(criador);
+			for (String proj : retornarListaProjetosDoUsuario().asArray()) {
+				String[] registro = this.projeto.arquivo.explodirLinhaDoArquivo(proj);
+				if(Integer.parseInt(registro[0]) == idProjeto) {
+					projetoRetorno.projeto.setIdProjeto(Integer.parseInt(registro[0]));
+					projetoRetorno.projeto.setIdCriador(Integer.parseInt(registro[1]));
+					projetoRetorno.projeto.setTitulo(registro[2]);
+					projetoRetorno.projeto.setDescricao(registro[3]);
+					return projetoRetorno;
+				}
+			}
+			throw new ProjetoException.ProjetoNaoEcontrado();
+		}catch(Exception e) {
+			throw e;
+		}
 	}
 }
