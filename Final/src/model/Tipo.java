@@ -18,4 +18,13 @@ public enum Tipo {
 	public int getOrdem() {
 		return ordem;
 	}
+
+	public static Tipo getEnumByDescricao(String value) {
+		for(Tipo e: Tipo.values()) {
+			if(e.getDescricao().equals(value)) {
+				return e;
+			}
+		}
+		return null;
+	}
 }

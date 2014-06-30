@@ -23,4 +23,13 @@ public enum Estado {
 	public int getOrdem() {
 		return ordem;
 	}
+
+	public static Estado getEnumByDescricao(String value) {
+		for(Estado e: Estado.values()) {
+			if(e.getDescricao().equals(value)) {
+				return e;
+			}
+		}
+		return null;
+	}
 }

@@ -2,18 +2,19 @@ package view;
 
 import java.util.InputMismatchException;
 
+import model.Issue;
 import estruturas.Vector;
 
 public class IssueView extends PadraoView {
 
-   public char lerComando() {
-        char comando   = 'Q';
+   public String lerComando() {
+        String comando   = "Q";
         boolean validado = false;
 
         do {
             try {
                 this.imprimirSelecioneComando();
-                comando = Character.toUpperCase(this.teclado.next().charAt(0));
+                comando = this.lerString().toUpperCase();
                 validado = true;
             } catch(InputMismatchException e) {
             	printMsgln("Comando invalido");
@@ -26,7 +27,8 @@ public class IssueView extends PadraoView {
     }
 
 	public void imprimirSelecioneComando() {
-		printMsg("Selecione um comando (L para Listar Issues, C para Cadastrar Nova Issue: ");
+		printMsg("Selecione um comando (L para Listar Issues, C para Cadastrar Nova Issue"
+				+ " ou ID da Issue para ver os Detalhes: ");
 	}
 	
 	public void imprimirListaDeIssues(Vector<String> lista) {
@@ -41,4 +43,12 @@ public class IssueView extends PadraoView {
     		}
 		}
     }
+
+	public void mostrarDadosIssue(Issue issue) {
+		printMsgln(String.format("%d - %s", issue.getIdIssue(), issue.getTitulo()));
+		printMsgln(issue.getDescricao());
+		printMsgln(String.format("%s - %s - %s"
+				, issue.getCriticidade(), issue.getTipo(), issue.getStatus())
+		);
+	}
 }

@@ -56,4 +56,12 @@ public class IssueException {
 			super("Para cadastrar um issue o usuario deve ser definido");
 		}
 	}
+
+	public static class IssueNaoEcontradaException extends Exception {
+		private static final long serialVersionUID = 1L;
+		
+		public IssueNaoEcontradaException() {
+			super("Issue nao encontrado"); 
+		}
+	}
 }

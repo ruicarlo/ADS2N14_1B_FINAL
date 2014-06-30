@@ -21,4 +21,13 @@ public enum Criticidade {
 	public int getOrdem() {
 		return ordem;
 	}
+
+	public static Criticidade getEnumByDescricao(String value) {
+		for(Criticidade e: Criticidade.values()) {
+			if(e.getDescricao().equals(value)) {
+				return e;
+			}
+		}
+		return null;
+	}
 }

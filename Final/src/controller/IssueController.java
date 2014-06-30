@@ -147,19 +147,32 @@ public class IssueController {
 		this.validarStatus();
 	}
 	
-	public void gerenciarIssues() {
-		this.executarComandoTeclado(issueV.lerComando());
+	public Issue gerenciarIssues() {
+		return this.executarComandoTeclado(issueV.lerComando());
 	}
 
-	private void executarComandoTeclado(char comando) {
+	private Issue executarComandoTeclado(String comando) {
 		switch(comando) {
-			case 'L':
+			case "L":
 				issueV.imprimirListaDeIssues(this.retornarIssuesDoProjeto());
 			break;
-			case 'C':
+			case "C":
 //				this.cadastrarIssue();
-			break;
-		}
+				break;
+
+			default:
+				try {
+					this.issue = this.buscarIssue(Integer.parseInt(comando));
+					issueV.mostrarDadosIssue(issue);
+					return this.issue;
+				} catch (NumberFormatException nfe) {
+					issueV.printMsgln("Opção inválida.");
+				} catch (IssueNaoEcontradaException ine) {
+					issueV.printMsgln(ine.getMessage());
+				}
+			}
+
+			return this.gerenciarIssues();
 	}
 
 	public Vector<String> retornarIssuesDoProjeto() {
@@ -171,5 +184,24 @@ public class IssueController {
 			}
 		}
 		return issuesFiltrados;
+	}
+
+	public Issue buscarIssue(int idIssue) throws IssueNaoEcontradaException {
+		Issue issueRetorno = new Issue();
+		for (String issu : this.retornarIssuesDoProjeto().asArray()) {
+			String[] registro = this.issue.arquivo.explodirLinhaDoArquivo(issu);
+			if(Integer.parseInt(registro[0]) == idIssue) {
+				issueRetorno.setIdIssue(Integer.parseInt(registro[0]));
+				issueRetorno.setIdUsuario(Integer.parseInt(registro[1]));
+				issueRetorno.setIdProjeto(Integer.parseInt(registro[2]));
+				issueRetorno.setDescricao(registro[3]);
+				issueRetorno.setTitulo(registro[4]);
+				issueRetorno.setCriticidade(Criticidade.getEnumByDescricao(registro[5]));
+				issueRetorno.setTipo(Tipo.getEnumByDescricao(registro[6]));
+				issueRetorno.setStatus(Estado.getEnumByDescricao(registro[7]));
+				return issueRetorno;
+			}
+		}
+		throw new IssueNaoEcontradaException();
 	}
 }
