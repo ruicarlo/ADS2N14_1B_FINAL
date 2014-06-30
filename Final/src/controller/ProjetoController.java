@@ -80,7 +80,14 @@ public class ProjetoController {
 	private void executarComandoTeclado(char comando) {
 		switch(comando) {
 			case 'L':
-				projetoV.imprimirListaDeProjetos(this.retornarListaProjetosDoUsuario());
+				Vector<String> listaProjetos = this.retornarListaProjetosDoUsuario();
+				if(listaProjetos.getSize() > 0) {
+					projetoV.imprimirListaDeProjetos(listaProjetos);
+				} else {
+					projetoV.imprimirUsuarioSemProjeto();
+					
+					this.telaInicialApp();
+				}
 			break;
 			case 'C':
 				this.cadastrarProjeto();

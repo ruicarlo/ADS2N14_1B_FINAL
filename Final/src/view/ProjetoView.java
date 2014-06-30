@@ -11,6 +11,10 @@ public class ProjetoView extends PadraoView {
     	printMsg("Projeto cadastrado com sucesso");
     }
 
+	public void imprimirUsuarioSemProjeto() {
+    	printMsgln("Este usuario nao possui projetos.");
+    }
+
 	public void imprimirSelecioneComando() {
     	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto: ");
     }
