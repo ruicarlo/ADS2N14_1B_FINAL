@@ -105,7 +105,7 @@ public class ProjetoController {
 	}
 	public Vector<String> retornarListaProjetosDoUsuario() {
 		Vector<String> todosProjetos = projeto.retornarListaProjetos();
-		Vector<String> projetosFiltrados = new Vector();
+		Vector<String> projetosFiltrados = new Vector<String>();
 		for(String registro : todosProjetos.asArray()){
 			if(Integer.parseInt(projeto.arquivo.explodirLinhaDoArquivo(registro)[1]) == projeto.getIdCriador()){
 				projetosFiltrados.append(registro);
