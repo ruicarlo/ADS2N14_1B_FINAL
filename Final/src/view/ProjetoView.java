@@ -50,7 +50,8 @@ public class ProjetoView extends PadraoView {
     	if(lista.getSize() > 0) {
     		for(String itemLista : lista.asArray()) {
     			String[] registro = arquivo.explodirLinhaDoArquivo(itemLista);
-    			printMsgln(String.format("%d - %s",Integer.parseInt(registro[0]),registro[2]));
+    			printMsgln(String.format("%d - %s %s"
+    					, Integer.parseInt(registro[0]), registro[2], registro[4]));
     		}
 		}
     }

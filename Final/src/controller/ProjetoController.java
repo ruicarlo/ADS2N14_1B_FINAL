@@ -128,7 +128,7 @@ public class ProjetoController {
 		Vector<String> projetosFiltrados = new Vector<String>();
 		for(String registro : todosProjetos.asArray()){
 			if(Integer.parseInt(projeto.arquivo.explodirLinhaDoArquivo(registro)[1]) == projeto.getIdCriador()){
-				projetosFiltrados.append(registro);
+				projetosFiltrados.append(registro+"##(owner)");
 			}
 		}
 		return projetosFiltrados;
