@@ -18,7 +18,7 @@ public class ProjetoView extends PadraoView {
     }
 
 	public void imprimirSelecioneComando() {
-    	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto, Q para encerrar o sistema ou ID do Projeto para gerenciar Issues: ");
+    	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto, Q para encerrar o sistema ou ID do Projeto ver seus detalhes: ");
     }
 
     public void imprimirDigiteTitulo() {
@@ -62,8 +62,8 @@ public class ProjetoView extends PadraoView {
     public void mostrarDadosProjeto(Projeto projeto) {
     	printMsgln("Detalhes do projeto:");
 		printMsgln(String.format("%d - %s", projeto.getIdProjeto(), projeto.getTitulo()));
-		printMsgln("Digite X para excluir, L para listas issues ou V para voltar");
 		printMsgln(projeto.getDescricao());
+		printMsgln("Digite X para excluir, L para listas issues ou V para voltar");
 	}
 
 	public void imprimirProjetoEXcluido(boolean excluido) {
