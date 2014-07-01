@@ -7,7 +7,7 @@ import estruturas.Vector;
 
 public class IssueView extends PadraoView {
 
-   public String lerComando() {
+	public String lerComando() {
         String comando   = "Q";
         boolean validado = false;
 
@@ -47,8 +47,10 @@ public class IssueView extends PadraoView {
 	public void mostrarDadosIssue(Issue issue) {
 		printMsgln(String.format("%d - %s", issue.getIdIssue(), issue.getTitulo()));
 		printMsgln(issue.getDescricao());
-		printMsgln(String.format("%s - %s - %s"
+		printMsgln(String.format("Criticidade:%s - Tipo:%s - Status:%s"
 				, issue.getCriticidade(), issue.getTipo(), issue.getStatus())
 		);
 	}
+	
 }
+
