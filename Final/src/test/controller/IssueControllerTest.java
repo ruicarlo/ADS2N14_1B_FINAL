@@ -30,7 +30,7 @@ public class IssueControllerTest {
 		when(projetoDoIssue.getIdProjeto()).thenReturn(1);
 		when(usuarioLogado.getIdUsuario()).thenReturn(1);
 
-		issueController = new IssueController(projetoDoIssue);
+		issueController = new IssueController(projetoDoIssue, usuarioLogado);
 	}
 
 	@Test

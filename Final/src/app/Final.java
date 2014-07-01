@@ -26,7 +26,7 @@ public class Final {
 			ProjetoController projetoC = new ProjetoController(usuarioLogado);
 			Projeto projeto = projetoC.telaInicialApp();
 			
-			IssueController issueC = new IssueController(projeto);
+			IssueController issueC = new IssueController(projeto, usuarioLogado);
 			issueC.gerenciarIssues();
 		}
 	}

@@ -35,3 +35,5 @@
 35##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
 36##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
 37##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+38##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+39##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
