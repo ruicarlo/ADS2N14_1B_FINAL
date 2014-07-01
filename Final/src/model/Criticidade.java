@@ -30,4 +30,13 @@ public enum Criticidade {
 		}
 		return null;
 	}
+
+	public static Criticidade getEnumById(int id) {
+		for(Criticidade e: Criticidade.values()) {
+			if(e.getOrdem() == id) {
+				return e;
+			}
+		}
+		return null;
+	}
 }

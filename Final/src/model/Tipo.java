@@ -27,4 +27,13 @@ public enum Tipo {
 		}
 		return null;
 	}
+
+	public static Tipo getEnumById(int id) {
+		for(Tipo e: Tipo.values()) {
+			if(e.getOrdem() == id) {
+				return e;
+			}
+		}
+		return null;
+	}
 }
