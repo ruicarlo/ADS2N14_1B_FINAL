@@ -60,6 +60,7 @@ public class ProjetoView extends PadraoView {
     }
 
     public void mostrarDadosProjeto(Projeto projeto) {
+    	printMsgln("Digite E para excluir, L para listas issues ou V para voltar");
 		printMsgln(String.format("%d - %s", projeto.getIdProjeto(), projeto.getTitulo()));
 		printMsgln(projeto.getDescricao());
 	}

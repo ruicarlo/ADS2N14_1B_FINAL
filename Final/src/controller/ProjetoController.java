@@ -99,7 +99,18 @@ public class ProjetoController {
 				System.exit(0);
 			default:  
 				try {
-					return this.buscarProjeto(Integer.parseInt(comando));
+					this.projeto = this.buscarProjeto(Integer.parseInt(comando));
+					projetoV.mostrarDadosProjeto(projeto);
+					switch(projetoV.lerComando) {
+						case "E":
+						break
+						case "L":
+						break
+						case "V":
+						break
+							
+					}
+					return this.projeto;
 				} catch (NumberFormatException nfe) {
 					projetoV.printMsgln("Opção inválida.");
 				} catch (ProjetoNaoEcontrado pne) {
