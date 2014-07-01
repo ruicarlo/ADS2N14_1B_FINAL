@@ -16,7 +16,7 @@ public class ProjetoView extends PadraoView {
     }
 
 	public void imprimirSelecioneComando() {
-    	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto ou ID do Projeto para gerenciar Issues: ");
+    	printMsg("Selecione um comando (L para Listar Projetos, C para Cadastrar Novo Projeto, Q para encerrar o sistema ou ID do Projeto para gerenciar Issues: ");
     }
 
     public void imprimirDigiteTitulo() {

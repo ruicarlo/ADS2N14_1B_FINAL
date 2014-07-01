@@ -94,7 +94,9 @@ public class ProjetoController {
 			case "C":
 				this.cadastrarProjeto();
 			break;
-
+			case "Q":
+				projetoV.printMsg("Encerrando sistema!");
+				System.exit(0);
 			default:  
 				try {
 					return this.buscarProjeto(Integer.parseInt(comando));
