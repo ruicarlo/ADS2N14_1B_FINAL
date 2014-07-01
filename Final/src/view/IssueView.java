@@ -51,4 +51,25 @@ public class IssueView extends PadraoView {
 				, issue.getCriticidade(), issue.getTipo(), issue.getStatus())
 		);
 	}
+
+	public void imprimirDigiteTitulo() {
+		printMsgln("Digite o titulo da issue");
+	}
+
+	public void imprimirCriticidade() {
+		printMsgln("Digite a criticidade da issue");
+	}
+
+	public void imprimirDigiteDescricao() {
+		printMsgln("Digite a descricao da issue");
+	}
+
+	public void imprimirEstado() {
+		printMsgln("Digite o estado da issue");
+	}
+
+	public void imprimirTipo() {
+		printMsgln("Digite o tipo da issue");
+		
+	}
 }
