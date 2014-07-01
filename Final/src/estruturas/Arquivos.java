@@ -89,4 +89,28 @@ public class Arquivos {
 		String[] linha = linhaArquivo.split("##");
 		return linha;
 	}
+
+	public boolean excluirRegisro(String valor, int numColuna) {
+		String[] colunas;
+		boolean excluido = false;
+		Vector<String> registros = getRegistros();
+		Vector<String> conteudo = new Vector<String>();
+
+		for (String registro : registros.asArray()) {
+			colunas = explodirLinhaDoArquivo(registro);
+
+			if (colunas[numColuna].equals(valor)) {
+				excluido = true;
+				continue;
+			}
+
+			conteudo.append(registro);
+		}
+
+		if (excluido) {
+			escrever(conteudo.asArray(), true);
+		}
+
+		return excluido;
+	}
 }

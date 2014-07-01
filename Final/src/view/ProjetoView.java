@@ -2,6 +2,9 @@ package view;
 
 import java.util.InputMismatchException;
 
+import model.Issue;
+import model.Projeto;
+
 import estruturas.Vector;
 
 public class ProjetoView extends PadraoView {
@@ -55,4 +58,10 @@ public class ProjetoView extends PadraoView {
     		}
 		}
     }
+
+    public void mostrarDadosProjeto(Projeto projeto) {
+    	printMsgln("Digite E para excluir, L para listas issues ou V para voltar");
+		printMsgln(String.format("%d - %s", projeto.getIdProjeto(), projeto.getTitulo()));
+		printMsgln(projeto.getDescricao());
+	}
 }
