@@ -38,3 +38,4 @@
 38##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
 39##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
 40##6##6##issue para testar a qualidade do software##rui carlos##LOW##BUG##NOVO
+41##6##15##123teste teste123##teste123teste##BLOCKER##BUG##ATRIBUIDO

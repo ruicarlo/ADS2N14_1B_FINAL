@@ -27,7 +27,7 @@ public class IssueView extends PadraoView {
     }
 
 	public void imprimirSelecioneComando() {
-		printMsg("Selecione um comando (L para Listar Issues, C para Cadastrar Nova Issue"
+		printMsg("Selecione um comando (C para Cadastrar Nova Issue"
 				+ " ou ID da Issue para ver os Detalhes: ");
 	}
 	

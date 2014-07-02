@@ -10,3 +10,4 @@
 10##16##6##2014/07/01 21:43:10##Issue criada com sucesso.
 11##16##6##2014/07/01 21:43:10##Usuario userX marcou a issue como valida.
 12##16##6##2014/07/01 21:43:10##UsuariouserXalterou a criticidade para criticidadeY
+13##41##6##02/07/2014 01:28##Issue criada com sucesso.

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import view.EventoView;
+import estruturas.Vector;
 import exceptions.controllers.EventoException;
 import exceptions.controllers.EventoException.*;
 import exceptions.controllers.UsuarioException;
@@ -108,41 +109,6 @@ public class EventoController {
 		this.salvarEvento();
 		eventoV.msgMarcadaComoWontFix();
 	}
-
-	//Monta Menu de Evento//
-/*	public void menuEventoController(){
-		if(eventoV.menuEvento() == 1) {
-			//chamar o metodo criarIssue
-			eventoV.msgIssueCriada();
-		}else if(eventoV.menuEvento() == 2){
-			//chamar o metodo marcarIssueComoValida
-			eventoV.msgMarcouIssueValida();
-		}else if(eventoV.menuEvento() == 3){
-			//chamar o metodo alterarCriticidade
-			eventoV.msgCriticidadeAlterada();
-		}else if(eventoV.menuEvento() == 4){
-			//chamar o metodo alterarTipo
-			eventoV.msgTipoAlterado();
-		}else if(eventoV.menuEvento() == 5){
-			//chamar o metodo inserirComentario
-			eventoV.msgComentarioInserido();
-		}else if(eventoV.menuEvento() == 6){
-			//chamar o metodo atribuirIssue
-			eventoV.msgIssueAtribuida();
-		}else if(eventoV.menuEvento() == 7){
-			//chamar o metodo iniciarDesenvolvimento
-			eventoV.msgDesenvolvimentoIniciado();
-		}else if(eventoV.menuEvento() == 8){
-			//chamar o metodo marcarComoDuplicado
-			eventoV.msgMarcarComoDuplicado();
-		}else if(eventoV.menuEvento() == 9){
-			//chamar o metodo fecharIssue 
-			eventoV.msgIssueFechada();
-		}else if(eventoV.menuEvento() == 10){
-			//chamar o metodo marcarWontFix 
-			eventoV.msgMarcadaComoWontFix();
-		}	
-	}*/
 	
 	private void validarData() throws DataInvalidaException {
 		if(this.evento.getData() == null || this.evento.getData().equals("")) {
@@ -206,5 +172,21 @@ public class EventoController {
 	public void setComentario(String comentario) throws ComentarioInvalidoException {
 		this.evento.setComentario(comentario);
 		this.validarComentario();
+	}
+
+	public void visualizarEventos() {
+		Vector<String> listaEventos = this.retornarListaEventosDaIssue();
+		eventoV.imprimirListaDeEventos(listaEventos);
+	}
+
+	private Vector<String> retornarListaEventosDaIssue() {
+		Vector<String> todosEventos = evento.retornarListaEventos();
+		Vector<String> projetosFiltrados = new Vector<String>();
+		for(String registro : todosEventos.asArray()){
+			if(Integer.parseInt(evento.arquivo.explodirLinhaDoArquivo(registro)[1]) == evento.getIdIssue()){
+				projetosFiltrados.append(registro);
+			}
+		}
+		return projetosFiltrados;
 	}
 }

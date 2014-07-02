@@ -1,10 +1,7 @@
 package app;
 
 import static java.lang.System.out;
-import model.Projeto;
 import model.Usuario;
-import controller.IssueController;
-//import controller.IssueController;
 import controller.ProjetoController;
 import controller.UsuarioController;
 import exceptions.controllers.UsuarioException.*;
@@ -24,12 +21,7 @@ public class Final {
 
 		while (true) {
 			ProjetoController projetoC = new ProjetoController(usuarioLogado);
-			Projeto projeto = projetoC.telaInicialApp();
-			
-			IssueController issueC = new IssueController(projeto, usuarioLogado);
-			issueC.gerenciarIssues();
-	
-			
+			projetoC.telaInicialApp();
 		}
 	}
 

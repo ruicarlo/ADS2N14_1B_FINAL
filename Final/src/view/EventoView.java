@@ -1,5 +1,7 @@
 package view;
 
+import estruturas.Vector;
+
 public class EventoView extends PadraoView {
 	
 	public int menuEvento() {
@@ -123,6 +125,15 @@ public class EventoView extends PadraoView {
 	public String getMsgMarcadaComoWontFix(){
 		return "Issue marcada como Wont Fix";
 	}
-	
+
+	public void imprimirListaDeEventos(Vector<String> lista) {
+    	if(lista.getSize() > 0) {
+    		for(String itemLista : lista.asArray()) {
+    			String[] registro = arquivo.explodirLinhaDoArquivo(itemLista);
+    			printMsgln(String.format("%d - %s %s"
+    					, Integer.parseInt(registro[0]), registro[2], registro[4]));
+    		}
+		}
+    }
 	
 }

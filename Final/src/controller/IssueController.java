@@ -156,32 +156,33 @@ public class IssueController {
 		this.validarStatus();
 	}
 	
-	public Issue gerenciarIssues() {
-		return this.executarComandoTeclado(issueV.lerComando());
+	public void gerenciarIssues() {
+		this.mostrarListaDeIssues();
+		this.executarComandoTeclado(issueV.lerComando());
 	}
 
-	private Issue executarComandoTeclado(String comando) {
+	private void executarComandoTeclado(String comando) {
 		switch(comando) {
-			case "L":
-				issueV.imprimirListaDeIssues(this.retornarIssuesDoProjeto());
-			break;
 			case "C":
 				this.cadastrarIssue();
 				break;
 
 			default:
 				try {
-					this.issue = this.buscarIssue(Integer.parseInt(comando));
-					issueV.mostrarDadosIssue(issue);
-					return this.issue;
+					this.exibirDetalhesIssue(comando);
+					return;
 				} catch (NumberFormatException nfe) {
 					issueV.printMsgln("Opção inválida.");
 				} catch (IssueNaoEcontradaException ine) {
 					issueV.printMsgln(ine.getMessage());
-				}
+				} catch (Exception e) {}
 			}
 
-			return this.gerenciarIssues();
+			this.gerenciarIssues();
+	}
+
+	private void mostrarListaDeIssues() {
+		issueV.imprimirListaDeIssues(this.retornarIssuesDoProjeto());
 	}
 
 	private void cadastrarIssue() {
@@ -242,5 +243,12 @@ public class IssueController {
 			}
 		}
 		throw new IssueNaoEcontradaException();
+	}
+
+	public void exibirDetalhesIssue(String idIssue) throws Exception {
+		issue = this.buscarIssue(Integer.parseInt(idIssue));
+		issueV.mostrarDadosIssue(issue);
+
+		eventoC.visualizarEventos();
 	}
 }

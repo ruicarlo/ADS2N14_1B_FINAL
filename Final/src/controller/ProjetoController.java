@@ -10,11 +10,11 @@ import model.Usuario;
 public class ProjetoController {
 	Projeto projeto = new Projeto();
 	ProjetoView projetoV = new ProjetoView();
-	Usuario criador;
+	Usuario usuarioLogado;
 
-	public ProjetoController(Usuario criador) throws Exception {
-		this.criador = criador;
-		this.setCriador(criador);
+	public ProjetoController(Usuario usuarioLogado) throws Exception {
+		this.usuarioLogado = usuarioLogado;
+		this.setCriador(usuarioLogado);
 	}
 
 	public void salvarProjeto() throws TituloInvalidoException,
@@ -75,11 +75,11 @@ public class ProjetoController {
 		this.projeto.setIdCriador(usuario.getIdUsuario());
 	}
 	
-	public Projeto telaInicialApp() {
-		return this.executarComandoTeclado(projetoV.lerComando());
+	public void telaInicialApp() {
+		this.executarComandoTeclado(projetoV.lerComando());
 	}
 
-	private Projeto executarComandoTeclado(String comando) {
+	private void executarComandoTeclado(String comando) {
 		switch(comando) {
 			case "L":
 				Vector<String> listaProjetos = this.retornarListaProjetosDoUsuario();
@@ -100,15 +100,15 @@ public class ProjetoController {
 			default:  
 				try {
 					this.exibirDetalhesProjeto(comando);
-					return this.projeto;
+					return;
 				} catch (NumberFormatException nfe) {
 					projetoV.printMsgln("Op√ß√£o inv√°lida.");
 				} catch (ProjetoNaoEcontrado pne) {
 					projetoV.printMsgln(pne.getMessage());
-				}
+				} catch (Exception e) {}
 		}
 
-		return this.telaInicialApp();
+		this.telaInicialApp();
 	}
 
 	private void cadastrarProjeto() {
@@ -126,6 +126,7 @@ public class ProjetoController {
     		projetoV.printMsg(e.getMessage());
     	}
 	}
+
 	public Vector<String> retornarListaProjetosDoUsuario() {
 		Vector<String> todosProjetos = projeto.retornarListaProjetos();
 		Vector<String> projetosFiltrados = new Vector<String>();
@@ -152,26 +153,29 @@ public class ProjetoController {
 		throw new ProjetoException.ProjetoNaoEcontrado();
 	}
 
-	public void exibirDetalhesProjeto(String idProjeto) throws NumberFormatException, ProjetoNaoEcontrado {
+	public void exibirDetalhesProjeto(String idProjeto) throws Exception {
 		projeto = this.buscarProjeto(Integer.parseInt(idProjeto));
 		projetoV.mostrarDadosProjeto(projeto);
 
-		projetoV.setTeclado();
-		String comando  = projetoV.lerString();
-		switch(comando.toUpperCase()) {
-			case "X":
-				projetoV.imprimirProjetoEXcluido(
-						projeto.arquivo.excluirRegisro(idProjeto, 0)
-				);
-			break;
-			case "L":
-				// chamar listar issues
-//				IssueController issueC = new IssueController(projeto);
-//				issueC.gerenciarIssues();
-			break;
-			case "V":
-				// volta para o menu
-			break;
-		}
+		boolean voltar = false;
+		do {
+			String comando  = projetoV.lerString();
+			switch(comando.toUpperCase()) {
+				case "X":
+					projetoV.imprimirProjetoEXcluido(
+							projeto.arquivo.excluirRegisro(idProjeto, 0)
+					);
+				break;
+				case "L":
+					IssueController issueC = new IssueController(projeto, usuarioLogado);
+					issueC.gerenciarIssues();
+				break;
+				case "V":
+					voltar  = true;
+				break;
+				default:
+					projetoV.printMsgln("OpÁ„o inv·lida.");
+			}
+		} while(!voltar);
 	}
 }
