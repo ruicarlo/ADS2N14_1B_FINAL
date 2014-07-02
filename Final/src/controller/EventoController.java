@@ -78,28 +78,38 @@ public class EventoController {
 		eventoV.msgComentarioInserido();
 	}
 	
-	public void eventoAtribuirIssue(){
-		//gravar no evento
+	public void eventoAtribuirIssue() throws Exception {
+		this.setComentario(eventoV.getMsgIssueAtribuida());
+		this.setData(this.dataHora());
+		this.salvarEvento();
 		eventoV.msgIssueAtribuida();
 	}
 	
-	public void eventoIniciarDesenvolvimento(){
-		//gravar no evento
+	public void eventoIniciarDesenvolvimento() throws Exception{
+		this.setComentario(eventoV.getMsgDesenvolvimentoIniciado());
+		this.setData(this.dataHora());
+		this.salvarEvento();
 		eventoV.msgDesenvolvimentoIniciado();
 	}
 	
-	public void eventoMarcarComoDuplicado(){
-		//gravar no evento
+	public void eventoMarcarComoDuplicado() throws Exception{
+		this.setComentario(eventoV.getMsgMarcarComoDuplicado());
+		this.setData(this.dataHora());
+		this.salvarEvento();
 		eventoV.msgMarcarComoDuplicado();
 	}
 	
-	public void eventoFecharIssue(){
-		//gravar no evento
+	public void eventoFecharIssue() throws Exception{
+		this.setComentario(eventoV.getMsgIssueFechada());
+		this.setData(this.dataHora());
+		this.salvarEvento();
 		eventoV.msgIssueFechada();
 	}
 	
-	public void eventoMarcarComoWontFix(){
-		//gravar no evento
+	public void eventoMarcarComoWontFix() throws Exception{
+		this.setComentario(eventoV.getMsgMarcadaComoWontFix());
+		this.setData(this.dataHora());
+		this.salvarEvento();
 		eventoV.msgMarcadaComoWontFix();
 	}
 
