@@ -54,48 +54,74 @@ public class EventoView extends PadraoView {
 		}
 	}
 	
-	public void msgEventoCadastrado() {
-		printMsgln("Evento" + "X" + "cadastrado com sucesso.");
-	}
-	
 	public void msgIssueCriada(){
-		printMsgln("Issue criada com sucesso.");
+		printMsgln(getMsgIssueCriada());
+	}
+	public String getMsgIssueCriada(){
+		return "Issue criada com sucesso.";
 	}
 	
 	public void msgMarcouIssueValida(){
-		printMsgln("Usuario" + "userX" + "marcou a issue como valida.");
+		printMsgln(getMsgMarcouIssueValida());
+	}
+	public String getMsgMarcouIssueValida(){
+		return "Usuario " + "userX" + " marcou a issue como valida.";
 	}
 	
 	public void msgCriticidadeAlterada(){
-		printMsgln("Usuario" + "userX" + "alterou a criticidade para " + "criticidadeY");
+		printMsgln(getMsgCriticidadeAlterada());
+	}
+	public String getMsgCriticidadeAlterada(){
+		return "Usuario " + "userX" + " alterou a criticidade para " + "criticidadeY";
 	}
 	
 	public void msgTipoAlterado(){
-		printMsgln("Usuario" + "userX" + "alterou o tipo para " + "tipoY");
+		printMsgln(getMsgTipoAlterado());
+	}
+	public String getMsgTipoAlterado(){
+		return "Usuario " + "userX" + " alterou o tipo para " + "tipoY";
 	}
 
 	public void msgComentarioInserido(){
-		printMsgln("Comentario inserido.");
+		printMsgln(getMsgComentarioInserido());
+	}
+	public String getMsgComentarioInserido(){
+		return "Comentario inserido.";
 	}
 	
 	public void msgIssueAtribuida(){
-		printMsgln("Issue atribuida para usuario " + "userX");
+		printMsgln(getMsgIssueAtribuida());
+	}
+	public String getMsgIssueAtribuida(){
+		return "Issue atribuida para usuario " + "userX";
 	}
 	
 	public void msgDesenvolvimentoIniciado(){
-		printMsgln("Desenvolvimento iniciado.");
+		printMsgln(getMsgDesenvolvimentoIniciado());
+	}
+	public String getMsgDesenvolvimentoIniciado(){
+		return "Desenvolvimento iniciado.";
 	}
 	
 	public void msgMarcarComoDuplicado(){
-		printMsgln("commentsToUserX" + " - "+ "Issue marcada como duplicado pelo usuario" + "userX");
+		printMsgln(getMsgMarcarComoDuplicado());
+	}
+	public String getMsgMarcarComoDuplicado(){
+		return "lerCommentsToUserX " + " - "+ " Issue marcada como duplicado pelo usuario " + "userX";
 	}
 	
 	public void msgIssueFechada(){
-		printMsgln("Issue finalizada.");
+		printMsgln(getMsgIssueFechada());
+	}
+	public String getMsgIssueFechada(){
+		return "Issue finalizada.";
 	}
 	
 	public void msgMarcadaComoWontFix(){
-		printMsgln("Issue marcada como Wont Fix");
+		printMsgln(getMsgMarcadaComoWontFix());
+	}
+	public String getMsgMarcadaComoWontFix(){
+		return "Issue marcada como Wont Fix";
 	}
 	
 	

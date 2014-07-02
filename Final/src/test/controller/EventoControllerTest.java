@@ -19,7 +19,7 @@ public class EventoControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		eventoController = new EventoController();
+		eventoController = new EventoController(usuarioLogado);
 
 		usuarioLogado = mock(Usuario.class);
 		IssueDoEvento = mock(Issue.class);

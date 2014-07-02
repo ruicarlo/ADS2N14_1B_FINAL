@@ -4,3 +4,9 @@
 4##1##1##29/06/2014##Criticidade de teste
 5##1##1##29/06/2014##Criticidade de teste
 6##1##1##29/06/2014##Criticidade de teste
+7##16##6##2014/07/01 21:18:07##Issue criada com sucesso.
+8##16##6##2014/07/01 21:37:40##Issue criada com sucesso.
+9##16##6##2014/07/01 21:37:40##UsuariouserXmarcou a issue como valida.
+10##16##6##2014/07/01 21:43:10##Issue criada com sucesso.
+11##16##6##2014/07/01 21:43:10##Usuario userX marcou a issue como valida.
+12##16##6##2014/07/01 21:43:10##UsuariouserXalterou a criticidade para criticidadeY

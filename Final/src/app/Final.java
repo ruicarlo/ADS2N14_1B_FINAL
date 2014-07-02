@@ -28,6 +28,8 @@ public class Final {
 			
 			IssueController issueC = new IssueController(projeto);
 			issueC.gerenciarIssues();
+	
+			
 		}
 	}
 
