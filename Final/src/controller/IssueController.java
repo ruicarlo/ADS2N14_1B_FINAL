@@ -17,10 +17,12 @@ import model.Usuario;
 public class IssueController {
 	Issue issue = new Issue();
 	IssueView issueV = new IssueView();
-
-	public IssueController(Projeto projeto, Usuario usuario) throws ProjetoNaoEcontrado, UsuarioInvalidoException {
+	EventoController eventoC;
+	
+	public IssueController(Projeto projeto, Usuario usuario) throws Exception {
 		this.setProjeto(projeto);
 		this.setUsuario(usuario);
+		this.eventoC = new EventoController(this, usuario);	
 	}
 
 	public void salvarIssue() throws CriticidadeInvalidaException,
@@ -196,7 +198,9 @@ public class IssueController {
     		this.setTipo(Tipo.getEnumById(issueV.lerInt()));
     		
 			this.salvarIssue();
-			issueV.imprimirIssueCadastradaComSucesso();
+			this.getIdIssue();
+			this.eventoC.eventoCriarIssue();
+//			issueV.imprimirIssueCadastradaComSucesso();
     	} catch(Exception e) {
     		issueV.printMsg(e.getMessage());
     	}
