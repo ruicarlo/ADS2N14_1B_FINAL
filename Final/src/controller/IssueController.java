@@ -4,7 +4,6 @@ import view.IssueView;
 import estruturas.Vector;
 import exceptions.controllers.IssueException;
 import exceptions.controllers.ProjetoException.ProjetoNaoEcontrado;
-import exceptions.controllers.UsuarioException.UsuarioInvalidoException;
 import exceptions.controllers.IssueException.*;
 import exceptions.controllers.UsuarioException;
 import model.Criticidade;
@@ -18,11 +17,17 @@ public class IssueController {
 	Issue issue = new Issue();
 	IssueView issueV = new IssueView();
 	EventoController eventoC;
+	Usuario usuarioLogado;
 	
 	public IssueController(Projeto projeto, Usuario usuario) throws Exception {
 		this.setProjeto(projeto);
 		this.setUsuario(usuario);
-		this.eventoC = new EventoController(this, usuario);	
+		this.setUsuarioLogado(usuario);
+	}
+
+	private void setUsuarioLogado(Usuario usuario) {
+		this.usuarioLogado = usuario;
+		
 	}
 
 	public void salvarIssue() throws CriticidadeInvalidaException,
@@ -198,12 +203,15 @@ public class IssueController {
     		this.setTipo(Tipo.getEnumById(issueV.lerInt()));
     		
 			this.salvarIssue();
-			this.getIdIssue();
+			this.setEventoC();
 			this.eventoC.eventoCriarIssue();
-//			issueV.imprimirIssueCadastradaComSucesso();
     	} catch(Exception e) {
     		issueV.printMsg(e.getMessage());
     	}
+	}
+
+	private void setEventoC() throws Exception {
+		this.eventoC = new EventoController(this.issue, this.usuarioLogado);
 	}
 
 	public Vector<String> retornarIssuesDoProjeto() {

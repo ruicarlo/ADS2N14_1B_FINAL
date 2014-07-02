@@ -12,10 +12,6 @@ import model.Issue;
 import model.Usuario;
 import model.Evento;
 
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 public class EventoController {
 	Evento evento = new Evento();
 	EventoView eventoV = new EventoView();
@@ -23,13 +19,13 @@ public class EventoController {
 	Usuario usuario = new Usuario();
 	private String dataHora;
 		
-	public EventoController(IssueController issueC, Usuario usuario) throws Exception{
-		this.setIssue(issueC);
+	public EventoController(Issue issue, Usuario usuario) throws Exception{
+		this.setIssue(issue);
 		this.setUsuario(usuario);
 	}
 	
 	public String dataHora(){
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		Date date = new Date();
 		dataHora = dateFormat.format(date);
 		return dataHora;
@@ -176,8 +172,8 @@ public class EventoController {
 		return this.evento.getIdIssue();
 	}
 
-	public void setIssue(IssueController issueC) throws Exception {
-		this.evento.setIdIssue(issueC.getIdIssue());
+	public void setIssue(Issue issue) throws Exception {
+		this.evento.setIdIssue(issue.getIdIssue());
 		this.validarIdIssue();
 	}
 

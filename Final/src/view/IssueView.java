@@ -72,9 +72,5 @@ public class IssueView extends PadraoView {
 		printMsgln("Digite o tipo da issue");
 		
 	}
-
-	public void imprimirIssueCadastradaComSucesso() {
-		printMsgln("Issue criada com sucesso");
-	}
 }
 

@@ -85,7 +85,8 @@ public class Issue {
 	}
 
     private String getDadosParaSalvarArquivo() {
-        return String.format("%d##%d##%d##%s##%s##%s##%s##%s", this.getProximoIdIssue(), 
+        this.idIssue = this.getProximoIdIssue();
+    	return String.format("%d##%d##%d##%s##%s##%s##%s##%s", this.idIssue, 
         		                                               this.idUsuario,
                                                                this.idProjeto,
         		                                               this.descricao,

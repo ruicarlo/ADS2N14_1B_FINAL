@@ -19,12 +19,14 @@ public class EventoControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		eventoController = new EventoController(usuarioLogado);
-
 		usuarioLogado = mock(Usuario.class);
 		IssueDoEvento = mock(Issue.class);
+		
 		when(IssueDoEvento.getIdIssue()).thenReturn(1);
 		when(usuarioLogado.getIdUsuario()).thenReturn(1);
+		
+		eventoController = new EventoController(IssueDoEvento, usuarioLogado);
+
 	}
 
 	@Test
@@ -63,6 +65,10 @@ public class EventoControllerTest {
 	@Test(expected = IssueInvalidoException.class)
 	public void testNaoSalvarEventoIssueInvalido() throws Exception {
 		doNothing().when(usuarioLogado).exists();
+		
+		//o objeto é criado para nao gerar um id valido para a issue
+		when(IssueDoEvento.getIdIssue()).thenReturn(0);
+		eventoController = new EventoController(IssueDoEvento, usuarioLogado);
 		
 		eventoController.setData("29/06/2014");
 		eventoController.setUsuario(usuarioLogado);
