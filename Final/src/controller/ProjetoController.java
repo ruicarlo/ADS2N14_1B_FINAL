@@ -102,7 +102,7 @@ public class ProjetoController {
 					this.exibirDetalhesProjeto(comando);
 					return;
 				} catch (NumberFormatException nfe) {
-					projetoV.printMsgln("Op√ß√£o inv√°lida.");
+					projetoV.printMsgln("OpÁ„o inv·lida.");
 				} catch (ProjetoNaoEcontrado pne) {
 					projetoV.printMsgln(pne.getMessage());
 				} catch (Exception e) {}
@@ -123,7 +123,7 @@ public class ProjetoController {
 			this.salvarProjeto();
 			projetoV.imprimirProjetoCadastradoComSucesso();
     	} catch(Exception e) {
-    		projetoV.printMsg(e.getMessage());
+    		projetoV.printMsgln(e.getMessage());
     	}
 	}
 
@@ -155,10 +155,11 @@ public class ProjetoController {
 
 	public void exibirDetalhesProjeto(String idProjeto) throws Exception {
 		projeto = this.buscarProjeto(Integer.parseInt(idProjeto));
-		projetoV.mostrarDadosProjeto(projeto);
 
 		boolean voltar = false;
 		do {
+			projetoV.mostrarDadosProjeto(projeto);
+
 			String comando  = projetoV.lerString();
 			switch(comando.toUpperCase()) {
 				case "X":

@@ -27,8 +27,10 @@ public class IssueView extends PadraoView {
     }
 
 	public void imprimirSelecioneComando() {
-		printMsg("Selecione um comando (C para Cadastrar Nova Issue"
-				+ " ou ID da Issue para ver os Detalhes: ");
+		printMsg("Digite C para Cadastrar Nova Issue, "
+				+ "ID da Issue para ver os Detalhes "
+				+ "ou V para voltar"
+		);
 	}
 	
 	public void imprimirListaDeIssues(Vector<String> lista) {
@@ -47,7 +49,7 @@ public class IssueView extends PadraoView {
 	public void mostrarDadosIssue(Issue issue) {
 		printMsgln(String.format("%d - %s", issue.getIdIssue(), issue.getTitulo()));
 		printMsgln(issue.getDescricao());
-		printMsgln(String.format("Criticidade:%s - Tipo:%s - Status:%s"
+		printMsgln(String.format("Criticidade: %s - Tipo: %s - Status: %s"
 				, issue.getCriticidade(), issue.getTipo(), issue.getStatus())
 		);
 	}

@@ -176,7 +176,12 @@ public class EventoController {
 
 	public void visualizarEventos() {
 		Vector<String> listaEventos = this.retornarListaEventosDaIssue();
-		eventoV.imprimirListaDeEventos(listaEventos);
+
+		if(listaEventos.getSize() > 0) {
+			eventoV.imprimirListaDeEventos(listaEventos);
+		} else {
+			eventoV.imprimirIssueSemEvento();
+		}
 	}
 
 	private Vector<String> retornarListaEventosDaIssue() {

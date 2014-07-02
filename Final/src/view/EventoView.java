@@ -51,7 +51,7 @@ public class EventoView extends PadraoView {
 				return 10;
 	
 			default:
-				printMsgln("Op√ß√£o inv√°lida!");
+				printMsgln("OpÁ„o inv·lida!");
 				return menuEvento();
 		}
 	}
@@ -135,5 +135,9 @@ public class EventoView extends PadraoView {
     		}
 		}
     }
+
+	public void imprimirIssueSemEvento() {
+    	printMsgln("Esta issue nao possui eventos.");
+	}
 	
 }

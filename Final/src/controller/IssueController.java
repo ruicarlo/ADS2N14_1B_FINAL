@@ -157,6 +157,12 @@ public class IssueController {
 	}
 	
 	public void gerenciarIssues() {
+		try {
+			this.setEventoC();
+		} catch(Exception e) {
+    		issueV.printMsgln(e.getMessage());
+    	}
+
 		this.mostrarListaDeIssues();
 		this.executarComandoTeclado(issueV.lerComando());
 	}
@@ -165,20 +171,22 @@ public class IssueController {
 		switch(comando) {
 			case "C":
 				this.cadastrarIssue();
-				break;
-
+			break;
+			case "V":
+				return;
 			default:
 				try {
 					this.exibirDetalhesIssue(comando);
-					return;
 				} catch (NumberFormatException nfe) {
-					issueV.printMsgln("Op√ß√£o inv√°lida.");
+					issueV.printMsgln("OpÁ„o inv·lida.");
 				} catch (IssueNaoEcontradaException ine) {
 					issueV.printMsgln(ine.getMessage());
-				} catch (Exception e) {}
-			}
+				} catch(Exception e) {
+		    		issueV.printMsgln(e.getMessage());
+		    	}
+		}
 
-			this.gerenciarIssues();
+		this.gerenciarIssues();
 	}
 
 	private void mostrarListaDeIssues() {
@@ -204,10 +212,9 @@ public class IssueController {
     		this.setTipo(Tipo.getEnumById(issueV.lerInt()));
     		
 			this.salvarIssue();
-			this.setEventoC();
 			this.eventoC.eventoCriarIssue();
     	} catch(Exception e) {
-    		issueV.printMsg(e.getMessage());
+    		issueV.printMsgln(e.getMessage());
     	}
 	}
 
@@ -249,6 +256,7 @@ public class IssueController {
 		issue = this.buscarIssue(Integer.parseInt(idIssue));
 		issueV.mostrarDadosIssue(issue);
 
+		eventoC.setIssue(issue);
 		eventoC.visualizarEventos();
 	}
 }

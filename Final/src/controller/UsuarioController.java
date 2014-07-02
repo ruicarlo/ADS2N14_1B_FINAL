@@ -20,19 +20,19 @@ public class UsuarioController {
 
 	private void validarNome() throws Exception {
 		if(this.user.getNome().isEmpty()) {
-			throw new Exception("Para cadastrar um usuï¿½rio o nome deve ser definido");
+			throw new Exception("Para cadastrar um usuário o nome deve ser definido");
 		}
 	}
 	
 	private void validarSenha() throws Exception {
 		if(this.user.getSenha().isEmpty()) {
-			throw new Exception("Para cadastrar um usuï¿½rio a senha deve ser definida");
+			throw new Exception("Para cadastrar um usuário a senha deve ser definida");
 		}
 	}
 
 	private void validarUsername() throws Exception {
 		if(this.user.getUsername().isEmpty()) {
-			throw new Exception("Para cadastrar um usuï¿½rio a senha deve ser definida");
+			throw new Exception("Para cadastrar um usuário a senha deve ser definida");
 		}
 	}
 
@@ -82,7 +82,7 @@ public class UsuarioController {
 				this.user.exists();
 				this.user.setSenha(usuarioV.solicitaSenha());
 			} catch(Exception e) {
-				// caso nÃ£o exista usuÃ¡rio
+				// caso não exista usuário
 				if(usuarioV.menuLogin() == 1) {
 					this.cadastrarUsuario();
 				} else {

@@ -4,7 +4,7 @@ public class UsuarioView extends PadraoView {
 
 	public String solicitaLogin() {
 
-		printMsg("UsuÃ¡rio:");
+		printMsg("Usuário:");
 		String username = lerString();
 
 		return username;
@@ -19,8 +19,8 @@ public class UsuarioView extends PadraoView {
 	}
 
 	public int menuLogin() {
-		printMsgln("UsuÃ¡rio nÃ£o cadastrado.");
-		printMsgln("Deseja cadastrar novo usuÃ¡rio? (sim/nao)");
+		printMsgln("Usuário não cadastrado.");
+		printMsgln("Deseja cadastrar novo usuário? (sim/nao)");
 		printMsg("Para tentar o login novamente escolha \"nao\".");
 		String opcao = lerString(); 
 
@@ -32,7 +32,7 @@ public class UsuarioView extends PadraoView {
 				return 0;
 	
 			default:
-				printMsgln("OpÃ§Ã£o invÃ¡lida!");
+				printMsgln("Opção inválida!");
 				return menuLogin();
 		}
 	}
@@ -44,7 +44,7 @@ public class UsuarioView extends PadraoView {
 
 		printMsg("Nome:");
 		dadosUsuario[0] = lerString();
-		printMsg("UsuÃ¡rio:");
+		printMsg("Usuário:");
 		dadosUsuario[2] = lerString();
 		printMsg("Senha:");
 		dadosUsuario[1] = lerString();
@@ -53,6 +53,6 @@ public class UsuarioView extends PadraoView {
 	}
 
 	public void msgUsuarioCadastrado() {
-		printMsgln("UsuÃ¡rio cadastrado com sucesso.");
+		printMsgln("Usuário cadastrado com sucesso.");
 	}
 }

@@ -6,9 +6,6 @@ import controller.ProjetoController;
 import controller.UsuarioController;
 import exceptions.controllers.UsuarioException.*;
 
-/**
- * Classe Final responsavel por cadastrar usuarios e efetuar login.
- */
 public class Final {
 
 	public static void main(String[] args) throws FalhaDeAutenticacaoException, Exception {
