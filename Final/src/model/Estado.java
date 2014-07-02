@@ -32,4 +32,13 @@ public enum Estado {
 		}
 		return null;
 	}
+
+	public static Estado getEnumById(int id) {
+		for(Estado e: Estado.values()) {
+			if(e.getOrdem() == id) {
+				return e;
+			}
+		}
+		return null;
+	}
 }

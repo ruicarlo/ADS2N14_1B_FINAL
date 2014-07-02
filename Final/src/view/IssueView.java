@@ -7,7 +7,7 @@ import estruturas.Vector;
 
 public class IssueView extends PadraoView {
 
-   public String lerComando() {
+	public String lerComando() {
         String comando   = "Q";
         boolean validado = false;
 
@@ -47,8 +47,34 @@ public class IssueView extends PadraoView {
 	public void mostrarDadosIssue(Issue issue) {
 		printMsgln(String.format("%d - %s", issue.getIdIssue(), issue.getTitulo()));
 		printMsgln(issue.getDescricao());
-		printMsgln(String.format("%s - %s - %s"
+		printMsgln(String.format("Criticidade:%s - Tipo:%s - Status:%s"
 				, issue.getCriticidade(), issue.getTipo(), issue.getStatus())
 		);
 	}
+
+	public void imprimirDigiteTitulo() {
+		printMsgln("Digite o titulo da issue");
+	}
+
+	public void imprimirCriticidade() {
+		printMsgln("Digite a criticidade da issue");
+	}
+
+	public void imprimirDigiteDescricao() {
+		printMsgln("Digite a descricao da issue");
+	}
+
+	public void imprimirEstado() {
+		printMsgln("Digite o estado da issue");
+	}
+
+	public void imprimirTipo() {
+		printMsgln("Digite o tipo da issue");
+		
+	}
+
+	public void imprimirIssueCadastradaComSucesso() {
+		printMsgln("Issue criada com sucesso");
+	}
 }
+

@@ -94,10 +94,13 @@ public class ProjetoController {
 			case "C":
 				this.cadastrarProjeto();
 			break;
-
+			case "Q":
+				projetoV.printMsg("Encerrando sistema!");
+				System.exit(0);
 			default:  
 				try {
-					return this.buscarProjeto(Integer.parseInt(comando));
+					this.exibirDetalhesProjeto(comando);
+					return this.projeto;
 				} catch (NumberFormatException nfe) {
 					projetoV.printMsgln("Opção inválida.");
 				} catch (ProjetoNaoEcontrado pne) {
@@ -147,5 +150,28 @@ public class ProjetoController {
 			}
 		}
 		throw new ProjetoException.ProjetoNaoEcontrado();
+	}
+
+	public void exibirDetalhesProjeto(String idProjeto) throws NumberFormatException, ProjetoNaoEcontrado {
+		projeto = this.buscarProjeto(Integer.parseInt(idProjeto));
+		projetoV.mostrarDadosProjeto(projeto);
+
+		projetoV.setTeclado();
+		String comando  = projetoV.lerString();
+		switch(comando.toUpperCase()) {
+			case "X":
+				projetoV.imprimirProjetoEXcluido(
+						projeto.arquivo.excluirRegisro(idProjeto, 0)
+				);
+			break;
+			case "L":
+				// chamar listar issues
+//				IssueController issueC = new IssueController(projeto);
+//				issueC.gerenciarIssues();
+			break;
+			case "V":
+				// volta para o menu
+			break;
+		}
 	}
 }

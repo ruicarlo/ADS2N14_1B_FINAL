@@ -4,6 +4,7 @@ import view.IssueView;
 import estruturas.Vector;
 import exceptions.controllers.IssueException;
 import exceptions.controllers.ProjetoException.ProjetoNaoEcontrado;
+import exceptions.controllers.UsuarioException.UsuarioInvalidoException;
 import exceptions.controllers.IssueException.*;
 import exceptions.controllers.UsuarioException;
 import model.Criticidade;
@@ -17,8 +18,9 @@ public class IssueController {
 	Issue issue = new Issue();
 	IssueView issueV = new IssueView();
 
-	public IssueController(Projeto projeto) throws ProjetoNaoEcontrado {
+	public IssueController(Projeto projeto, Usuario usuario) throws ProjetoNaoEcontrado, UsuarioInvalidoException {
 		this.setProjeto(projeto);
+		this.setUsuario(usuario);
 	}
 
 	public void salvarIssue() throws CriticidadeInvalidaException,
@@ -157,7 +159,7 @@ public class IssueController {
 				issueV.imprimirListaDeIssues(this.retornarIssuesDoProjeto());
 			break;
 			case "C":
-//				this.cadastrarIssue();
+				this.cadastrarIssue();
 				break;
 
 			default:
@@ -173,6 +175,31 @@ public class IssueController {
 			}
 
 			return this.gerenciarIssues();
+	}
+
+	private void cadastrarIssue() {
+		try {
+    		issueV.setTeclado();
+    		issueV.imprimirDigiteTitulo();
+    		this.setTitulo(issueV.lerString());
+    		
+    		issueV.imprimirDigiteDescricao();
+    		this.setDescricao(issueV.lerString());
+    		
+    		issueV.imprimirCriticidade();
+    		this.setCriticidade(Criticidade.getEnumById(issueV.lerInt()));
+    		
+    		issueV.imprimirEstado();
+    		this.setStatus(Estado.getEnumById(issueV.lerInt()));
+    		
+    		issueV.imprimirTipo();
+    		this.setTipo(Tipo.getEnumById(issueV.lerInt()));
+    		
+			this.salvarIssue();
+			issueV.imprimirIssueCadastradaComSucesso();
+    	} catch(Exception e) {
+    		issueV.printMsg(e.getMessage());
+    	}
 	}
 
 	public Vector<String> retornarIssuesDoProjeto() {
