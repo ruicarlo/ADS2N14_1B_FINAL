@@ -20,8 +20,7 @@ public class EventoController {
 	Usuario usuario = new Usuario();
 	private String dataHora;
 		
-	public EventoController(Issue issue, Usuario usuario) throws Exception{
-		this.setIssue(issue);
+	public EventoController(Usuario usuario) throws Exception{
 		this.setUsuario(usuario);
 	}
 	

@@ -2,7 +2,10 @@ package view;
 
 import java.util.InputMismatchException;
 
+import model.Criticidade;
+import model.Estado;
 import model.Issue;
+import model.Tipo;
 import estruturas.Vector;
 
 public class IssueView extends PadraoView {
@@ -23,6 +26,8 @@ public class IssueView extends PadraoView {
             	printMsgln(e.getMessage());
             }
         } while(!validado);
+
+        this.setTeclado();
         return comando;
     }
 
@@ -59,7 +64,11 @@ public class IssueView extends PadraoView {
 	}
 
 	public void imprimirCriticidade() {
-		printMsgln("Digite a criticidade da issue");
+		for(Criticidade crit: Criticidade.values()) {
+			printMsg(String.format("%s - %d; ", crit.getDescricao(), crit.getOrdem()));
+		}
+		printMsgln(" ");
+		printMsgln("Digite a criticidade da issue: ");
 	}
 
 	public void imprimirDigiteDescricao() {
@@ -67,11 +76,19 @@ public class IssueView extends PadraoView {
 	}
 
 	public void imprimirEstado() {
+		for(Estado est: Estado.values()) {
+			printMsg(String.format("%s - %d; ", est.getDescricao(), est.getOrdem()));
+		}
+		printMsgln(" ");
 		printMsgln("Digite o estado da issue");
 	}
 
 	public void imprimirTipo() {
-		printMsgln("Digite o tipo da issue");
+		for(Tipo tipo: Tipo.values()) {
+			printMsg(String.format("%s - %d; ", tipo.getDescricao(), tipo.getOrdem()));
+		}
+		printMsgln(" ");
+		printMsgln("Digite o tipo da issue:");
 		
 	}
 }

@@ -204,14 +204,14 @@ public class IssueController {
     		
     		issueV.imprimirCriticidade();
     		this.setCriticidade(Criticidade.getEnumById(issueV.lerInt()));
-    		
-    		issueV.imprimirEstado();
-    		this.setStatus(Estado.getEnumById(issueV.lerInt()));
-    		
+
     		issueV.imprimirTipo();
     		this.setTipo(Tipo.getEnumById(issueV.lerInt()));
-    		
+
+    		this.setStatus(Estado.NOVO);
+
 			this.salvarIssue();
+			this.eventoC.setIssue(issue);
 			this.eventoC.eventoCriarIssue();
     	} catch(Exception e) {
     		issueV.printMsgln(e.getMessage());
@@ -219,7 +219,7 @@ public class IssueController {
 	}
 
 	private void setEventoC() throws Exception {
-		this.eventoC = new EventoController(this.issue, this.usuarioLogado);
+		this.eventoC = new EventoController(this.usuarioLogado);
 	}
 
 	public Vector<String> retornarIssuesDoProjeto() {

@@ -82,7 +82,7 @@ public class IssueControllerTest {
 		issueController.setTitulo("Titulo de teste");
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
-//		issueController.setCriticidade(Criticidade.HIGH);
+		issueController.setCriticidade(Criticidade.getEnumById(9999));
 		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
 		issueController.setStatus(Estado.ABERTO);
@@ -97,7 +97,7 @@ public class IssueControllerTest {
 		issueController.setDescricao("Descricao de teste");
 		issueController.setUsuario(usuarioLogado);
 		issueController.setCriticidade(Criticidade.MEDIUM);
-//		issueController.setTipo(Tipo.BUG);
+		issueController.setTipo(Tipo.getEnumById(9999));
 		issueController.setProjeto(projetoDoIssue);
 		issueController.setStatus(Estado.DUPLICADO);
 		issueController.salvarIssue();
@@ -113,7 +113,7 @@ public class IssueControllerTest {
 		issueController.setCriticidade(Criticidade.HIGH);
 		issueController.setTipo(Tipo.BUG);
 		issueController.setProjeto(projetoDoIssue);
-//		issueController.setStatus(Estado.NOVO);
+		issueController.setStatus(Estado.getEnumById(9999));
 		issueController.salvarIssue();
 	}
 

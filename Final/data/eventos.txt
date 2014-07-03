@@ -11,3 +11,5 @@
 11##16##6##2014/07/01 21:43:10##Usuario userX marcou a issue como valida.
 12##16##6##2014/07/01 21:43:10##UsuariouserXalterou a criticidade para criticidadeY
 13##41##6##02/07/2014 01:28##Issue criada com sucesso.
+14##1##1##29/06/2014##Criticidade de teste
+15##57##6##02/07/2014 23:09##Issue criada com sucesso.

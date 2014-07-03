@@ -39,3 +39,19 @@
 39##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
 40##6##6##issue para testar a qualidade do software##rui carlos##LOW##BUG##NOVO
 41##6##15##123teste teste123##teste123teste##BLOCKER##BUG##ATRIBUIDO
+42##6##15##descrição##Teste estado NEW##CRITICAL##BUG##NOVO
+43##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+44##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+45##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+46##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+47##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+48##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+49##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+50##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+51##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+52##1##1##Descricao de teste##Titulo de teste##BLOCKER##ENHANCEMENT##ATRIBUIDO
+53##6##15##teste##teste##BLOCKER##ENHANCEMENT##NOVO
+54##6##6##debug##Debugando##LOW##ENHANCEMENT##NOVO
+55##6##23##Leonardo Teste##Teste Issue##MEDIUM##BUG##NOVO
+56##6##22##teste##teste##BLOCKER##ENHANCEMENT##NOVO
+57##6##22##asdsdas##asdsdas##CRITICAL##BUG##NOVO

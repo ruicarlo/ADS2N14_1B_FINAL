@@ -25,7 +25,8 @@ public class EventoControllerTest {
 		when(IssueDoEvento.getIdIssue()).thenReturn(1);
 		when(usuarioLogado.getIdUsuario()).thenReturn(1);
 		
-		eventoController = new EventoController(IssueDoEvento, usuarioLogado);
+		eventoController = new EventoController(usuarioLogado);
+		eventoController.setIssue(IssueDoEvento);
 
 	}
 
@@ -68,7 +69,7 @@ public class EventoControllerTest {
 		
 		//o objeto é criado para nao gerar um id valido para a issue
 		when(IssueDoEvento.getIdIssue()).thenReturn(0);
-		eventoController = new EventoController(IssueDoEvento, usuarioLogado);
+		eventoController = new EventoController(usuarioLogado);
 		
 		eventoController.setData("29/06/2014");
 		eventoController.setUsuario(usuarioLogado);
