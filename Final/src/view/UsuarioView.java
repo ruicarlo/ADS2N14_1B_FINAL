@@ -4,7 +4,7 @@ public class UsuarioView extends PadraoView {
 
 	public String solicitaLogin() {
 
-		printMsg("Usuário:");
+		printMsg("Usuário: ");
 		String username = lerString();
 
 		return username;
@@ -12,7 +12,7 @@ public class UsuarioView extends PadraoView {
 
 	public String solicitaSenha() {
 
-		printMsg("Senha:");
+		printMsg("Senha: ");
 		String senha = lerString();
 
 		return senha;
