@@ -1,6 +1,6 @@
 package app;
 
-import static java.lang.System.out;
+import view.AppView;
 import model.Usuario;
 import controller.ProjetoController;
 import controller.UsuarioController;
@@ -9,15 +9,19 @@ import exceptions.controllers.UsuarioException.*;
 public class Final {
 
 	public static void main(String[] args) throws FalhaDeAutenticacaoException, Exception {
-		Usuario usuarioLogado = new Usuario();
-		out.println("Sistema de Issues!");
+		AppView appV = new AppView();
+		appV.telaInicial();
 
 		/* LOGIN */
 		UsuarioController usuarioC = new UsuarioController();
+		Usuario usuarioLogado = new Usuario();
+		
 		usuarioLogado = usuarioC.login();
+		ProjetoController projetoC = new ProjetoController(usuarioLogado);
 
+		appV.imprimirMsgBemVindo(usuarioLogado.getNome());
+		
 		while (true) {
-			ProjetoController projetoC = new ProjetoController(usuarioLogado);
 			projetoC.telaInicialApp();
 		}
 	}
