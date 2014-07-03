@@ -128,10 +128,15 @@ public class EventoView extends PadraoView {
 
 	public void imprimirListaDeEventos(Vector<String> lista) {
     	if(lista.getSize() > 0) {
+    		int[] posicoes = {0,2,4};
+    		Tabela tab = new Tabela(this.verificarMaiorTexto(lista,posicoes));
+    		tab.printLinha(3);
     		for(String itemLista : lista.asArray()) {
     			String[] registro = arquivo.explodirLinhaDoArquivo(itemLista);
-    			printMsgln(String.format("%d - %s %s"
-    					, Integer.parseInt(registro[0]), registro[2], registro[4]));
+    			tab.printCelula(registro[0], true ,false);
+    			tab.printCelula(registro[2], false ,false);
+    			tab.printCelula(registro[4], false ,true);
+    			tab.printLinha(3);
     		}
 		}
     }
