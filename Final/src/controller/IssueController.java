@@ -157,6 +157,7 @@ public class IssueController {
 	}
 	
 	public void gerenciarIssues() {
+		this.issueV.setTeclado();
 		try {
 			this.setEventoC();
 		} catch(Exception e) {
