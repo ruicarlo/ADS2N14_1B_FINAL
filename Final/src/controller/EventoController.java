@@ -185,12 +185,12 @@ public class EventoController {
 
 	private Vector<String> retornarListaEventosDaIssue() {
 		Vector<String> todosEventos = evento.retornarListaEventos();
-		Vector<String> projetosFiltrados = new Vector<String>();
+		Vector<String> issueFiltradas = new Vector<String>();
 		for(String registro : todosEventos.asArray()){
 			if(Integer.parseInt(evento.arquivo.explodirLinhaDoArquivo(registro)[1]) == evento.getIdIssue()){
-				projetosFiltrados.append(registro);
+				issueFiltradas.append(registro);
 			}
 		}
-		return projetosFiltrados;
+		return issueFiltradas;
 	}
 }
